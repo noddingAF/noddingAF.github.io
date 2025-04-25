@@ -125,7 +125,6 @@
     --icon-button-border-radius: 9999px;
     --icon-button-fg: #999999;
     --icon-button-filled-bg: #00FF41; /* Verde Matrix */
-   #08ffe2
     --icon-button-filled-border: none;
     --input-text-border: 1px solid var(--bg-0);
     --input-text-border-active: 2px solid #61AFEF; 
@@ -347,8 +346,6 @@
     --user-stat-card-border: none;
     --user-stat-card-border-radius: 0;
     --user-stat-card-box-shadow: none
-    --secondary-nav-tab-active-text-decoration: underline #5ae268 2px; /* added */
-    --secondary-nav-tab-hover-text-decoration: underline #5ae268 2px; /* added */
 
 }
 
