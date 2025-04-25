@@ -704,9 +704,9 @@ body>header {
     background-image: radial-gradient(circle, #00ff33, #113b13 44%, #02ff00 86%);
 } 
 
-.fa-fade,
-.top-nav__dropdown:nth-of-type(5) > a:first-of-type {
-    display: none !important;
+// .fa-fade,
+// .top-nav__dropdown:nth-of-type(5) > a:first-of-type {
+//    display: none !important;
 }
 .torrent-search--list__name:visited {
     color: #77c872;
