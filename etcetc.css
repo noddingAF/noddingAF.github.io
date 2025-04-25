@@ -57,7 +57,7 @@
     --bbcode-rendered-border-muted: #464749;
     --bbcode-rendered-neutral-muted: #46484b66;
     --bbcode-rendered-accent-fg: #58a6ff;
-    --bbcode-rendered-accent-emphasis: #00FF41; /* Verde Matrix */
+    --bbcode-rendered-accent-emphasis: #08ffe2;
     --bbcode-rendered-attention-subtle: #00FF41; /* Verde Matrix */
     --bbcode-rendered-danger-fg: #E06C75;
     --bbcode-rendered-quote-bg: #6662;
@@ -123,12 +123,12 @@
     --icon-button-bg: inherit;
     --icon-button-border: none;
     --icon-button-border-radius: 9999px;
-    --icon-button-fg: currentColor;
+    --icon-button-fg: #999999;
     --icon-button-filled-bg: #00FF41; /* Verde Matrix */
-    --icon-button-filled-fg: white;
+   #08ffe2
     --icon-button-filled-border: none;
     --input-text-border: 1px solid var(--bg-0);
-    --input-text-border-active: 2px solid #00FF41; /* Verde Matrix */
+    --input-text-border-active: 2px solid #61AFEF; 
     --input-text-border-error: 1px solid #E06C75;
     --input-text-border-hover: 2px solid #999;
     --input-text-border-radius: 5px;
@@ -700,4 +700,7 @@ body>header {
 .fa-fade,
 .top-nav__dropdown:nth-of-type(5) > a:first-of-type {
     display: none !important;
+}
+.torrent-search--list__name:visited {
+    color: #77c872;
 }
