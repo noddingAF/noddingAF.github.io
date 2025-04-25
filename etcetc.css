@@ -256,7 +256,7 @@
     --secondary-nav-tab-menu-border-radius: 6px;
     --secondary-nav-tab-menu-box-shadow: 0 12px 17px 2px rgba(0, 0, 0, .14), 0 5px 22px 4px rgba(0, 0, 0, .12), 0 7px 8px -4px rgba(0, 0, 0, .2);
     --select-border: 1px solid var(--bg-0);
-    --select-border-active: 2px solid #00FF41; /* Verde Matrix */
+    --select-border-active: 2px solid #2299dd;
     --select-border-error: 1px solid #E06C75;
     --select-border-hover: 2px solid #999;
     --select-border-radius: 5px;
@@ -707,6 +707,9 @@ body>header {
 // .fa-fade,
 // .top-nav__dropdown:nth-of-type(5) > a:first-of-type {
 //    display: none !important;
+}
+.text-info:hover {
+  color: #b45fb7;
 }
 .torrent-search--list__name:visited {
     color: #77c872;
