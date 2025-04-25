@@ -58,7 +58,7 @@
     --bbcode-rendered-neutral-muted: #46484b66;
     --bbcode-rendered-accent-fg: #58a6ff;
     --bbcode-rendered-accent-emphasis: #08ffe2;
-    --bbcode-rendered-attention-subtle: #00FF41; /* Verde Matrix */
+    --bbcode-rendered-attention-subtle: #11ebff; 
     --bbcode-rendered-danger-fg: #E06C75;
     --bbcode-rendered-quote-bg: #6662;
     --bbcode-rendered-quote-border: var(--color-green);
@@ -325,7 +325,7 @@
     --torrent-row-buttons-fg: currentColor;
     --torrent-row-seeders-fg: #98C379;
     --torrent-row-leechers-fg: #E06C75;
-    --torrent-row-completed-fg: #00FF41; /* Verde Matrix */
+    --torrent-row-completed-fg: #729ed5;
     --torrent-row-thanks-fg: #E06C75;
     --torrent-row-comments-fg: #98C379;
     --torrent-row-internal-fg: #D19A66;
@@ -689,13 +689,16 @@ body>header {
     height:60px;
     grid-area: branding;
     text-decoration: none;
-    color: #9682de;
+    color: #96cd89;
     display: flex;
     column-gap: 5px;
     align-items: center;
     font-size: 3rem;
     border: 2px solid transparent !important;
 }
+.top-nav__site-logo {
+    background-image: radial-gradient(circle, #00ff33, #e9faea 44%, #02ff00 86%);
+} 
 
 .fa-fade,
 .top-nav__dropdown:nth-of-type(5) > a:first-of-type {
