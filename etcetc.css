@@ -318,7 +318,7 @@
     --torrent-group-hover-brightness-emphasis: 1.2;
     --torrent-group-chip-border: rgba(255, 255, 255, .05);
     --torrent-row-fg: #ccc;
-    --torrent-row-visited-fg: #56B6C2;
+    --torrent-row-visited-fg: #00FF41;
     --torrent-row-sticky-bg: var(--bg-3);
     --torrent-row-format-fg: #ccc;
     --torrent-row-format-bg: var(--bg-2);
@@ -402,7 +402,7 @@ a {
     color: #00FF41; /* Verde Matrix */
 }
 a:hover {
-    color: #39fa3d; /* cambie por las dudas */
+    color: #6bff6e; /* cambie por las dudas */
 }
 .text-green {
     color:var(--color-light-green)
