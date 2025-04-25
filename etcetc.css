@@ -347,6 +347,9 @@
     --user-stat-card-border: none;
     --user-stat-card-border-radius: 0;
     --user-stat-card-box-shadow: none
+    --secondary-nav-tab-active-text-decoration: underline #5ae268 2px; /* added */
+    --secondary-nav-tab-hover-text-decoration: underline #5ae268 2px; /* added */
+
 }
 
 .ratio-bar__uploaded i {
