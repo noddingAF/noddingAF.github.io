@@ -69,7 +69,7 @@
     --breadcrumb-active-fg: #aaa;
     --breadcrumb-hover-fg: #ddd;
     --breadcrumb-inactive-text-decoration: none;
-    --button-filled-bg: #00FF41; /* Verde Matrix */
+    --button-filled-bg: #019026; 
     --button-filled-border: none;
     --button-filled-border-radius: 9999px;
     --button-filled-fg: white;
@@ -697,7 +697,7 @@ body>header {
     border: 2px solid transparent !important;
 }
 .top-nav__site-logo {
-    background-image: radial-gradient(circle, #00ff33, #e9faea 44%, #02ff00 86%);
+    background-image: radial-gradient(circle, #00ff33, #113b13 44%, #02ff00 86%);
 } 
 
 .fa-fade,
