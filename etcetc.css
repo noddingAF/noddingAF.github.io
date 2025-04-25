@@ -402,7 +402,7 @@ a {
     color: #00FF41; /* Verde Matrix */
 }
 a:hover {
-    color: #00FF41; /* Verde Matrix (mismo que normal para hover) */
+    color: #ffffff; /* cambie por las dudas */
 }
 .text-green {
     color:var(--color-light-green)
