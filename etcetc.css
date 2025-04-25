@@ -696,6 +696,10 @@ body>header {
     font-size: 3rem;
     border: 2px solid transparent !important;
 }
+.top-nav__branding:hover {
+    color: #33FE2D; /* Hover color */
+
+}
 .top-nav__site-logo {
     background-image: radial-gradient(circle, #00ff33, #113b13 44%, #02ff00 86%);
 } 
