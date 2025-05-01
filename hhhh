@@ -1,0 +1,4 @@
+/* chatbox type space not fucking big */
+#chatbox__messages-create {
+    width: 1303px;
+    height: 55px;
