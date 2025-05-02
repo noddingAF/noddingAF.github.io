@@ -689,8 +689,8 @@ body>header {
     width:220px;
     height:60px;
     grid-area: branding;
-    text-decoration: none;
-    color: #96cd89;
+    color: rgb(2.8421709430404E-14, 255, 0); 
+    text-shadow: 0 0 10px rgb(2.8421709430404E-14, 255, 0);
     display: flex;
     column-gap: 5px;
     align-items: center;
