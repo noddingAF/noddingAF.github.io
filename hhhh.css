@@ -1,7 +1,8 @@
-/* chatbox type space not fucking big */
+/* textarea normal fucking size */
 .form__textarea {
-    height: 44px;
+    height: 40px;
 }
+
 li.top-nav__dropdown:nth-of-type(5) > a:nth-of-type(1) {
   display: none;
 }
