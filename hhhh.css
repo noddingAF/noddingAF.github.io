@@ -1,7 +1,6 @@
 /* chatbox type space not fucking big */
-#chatbox__messages-create {
-    width: 1303px;
-    height: 55px;
+.form__textarea {
+    height: 44px;
 }
 li.top-nav__dropdown:nth-of-type(5) > a:nth-of-type(1) {
   display: none;
