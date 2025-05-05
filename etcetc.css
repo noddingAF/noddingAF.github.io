@@ -124,7 +124,7 @@
     --icon-button-border: none;
     --icon-button-border-radius: 9999px;
     --icon-button-fg: #999999;
-    --icon-button-filled-bg: #000000; /* Verde Matrix */
+    --icon-button-filled-bg: #00FF41; /* Verde Matrix */
     --icon-button-filled-border: none;
     --input-text-border: 1px solid var(--bg-0);
     --input-text-border-active: 2px solid #61AFEF; 
@@ -268,7 +268,7 @@
     --subforum-listing-even-bg: transparent;
     --subforum-listing-border: none;
     --textarea-border: 1px solid var(--bg-4);
-    --textarea-border-active: 2px solid #00FF41; /* Verde Matrix */
+    --textarea-border-active: 2px solid #ff4800;
     --textarea-border-error: 1px solid #E06C75;
     --textarea-border-hover: 2px solid var(--bg-1);
     --textarea-border-radius: 5px;
