@@ -719,6 +719,7 @@ a.hover-green:hover {
     color: #77c872;
 }
 #chatbox__messages-create:focus {
-  color: #07ff00;
+    border-color: #07ff00;  
+    color: #07ff00;
 }
 
