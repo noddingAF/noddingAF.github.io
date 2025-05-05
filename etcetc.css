@@ -718,12 +718,3 @@ a.hover-green:hover {
 .torrent-search--list__name:visited {
     color: #77c872;
 }
-
-
-
-.form__text {
-    /* your existing styles */
-    text-overflow: ellipsis; /* This will show ... if text overflows */
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide overflow */
-}
