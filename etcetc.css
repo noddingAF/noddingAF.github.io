@@ -268,7 +268,7 @@
     --subforum-listing-even-bg: transparent;
     --subforum-listing-border: none;
     --textarea-border: 1px solid var(--bg-4);
-    --textarea-border-active: 2px solid #ff4800;
+    --textarea-border-active: 2px solid #61afef;
     --textarea-border-error: 1px solid #E06C75;
     --textarea-border-hover: 2px solid var(--bg-1);
     --textarea-border-radius: 5px;
@@ -718,3 +718,7 @@ a.hover-green:hover {
 .torrent-search--list__name:visited {
     color: #77c872;
 }
+#chatbox__messages-create:focus {
+  color: #07ff00;
+}
+
