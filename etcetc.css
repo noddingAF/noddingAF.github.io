@@ -124,7 +124,7 @@
     --icon-button-border: none;
     --icon-button-border-radius: 9999px;
     --icon-button-fg: #999999;
-    --icon-button-filled-bg: #00FF41; /* Verde Matrix */
+    --icon-button-filled-bg: #000000; /* Verde Matrix */
     --icon-button-filled-border: none;
     --input-text-border: 1px solid var(--bg-0);
     --input-text-border-active: 2px solid #61AFEF; 
