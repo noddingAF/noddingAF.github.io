@@ -718,3 +718,39 @@ a.hover-green:hover {
 .torrent-search--list__name:visited {
     color: #77c872;
 }
+
+
+
+
+.toggle-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 1.2rem;
+  color: #333; /* Adjust color as needed */
+  transition: transform 0.3s ease;
+}
+
+.toggle-button:hover {
+  color: #000; /* Darker color on hover */
+}
+
+/* For the "open" state */
+.toggle-button.open i::before {
+  content: "\f1de"; /* Font Awesome sliders icon (default) */
+}
+
+/* For the "close" state (using Font Awesome 'times' icon) */
+.toggle-button.close i::before {
+  content: "\f00d"; /* Font Awesome times icon */
+}
+
+/* Optional: Add animation for the toggle */
+.toggle-button.open {
+  transform: rotate(0deg);
+}
+
+.toggle-button.close {
+  transform: rotate(90deg);
+}
