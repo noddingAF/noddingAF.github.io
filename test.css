@@ -796,3 +796,48 @@ a[href*="https://darkpeers.org/donations"] {
 }
 
 
+
+.data-table>tr:not(:last-child)>td, .data-table>thead>tr:not(:last-child)>td, .data-table>tbody>tr:not(:last-child)>td, .data-table>tfoot>tr:not(:last-child)>td {
+    border-bottom: var(--data-table-tr-border);
+}
+
+.data-table tr:nth-child(odd)>td {
+    background-color: var(--data-table-tr-odd-bg);
+}
+.data-table>tr>td, .data-table>thead>tr>td, .data-table>tbody>tr>td, .data-table>tfoot>tr>td {
+    padding: 7px;
+    font-size: 14px;
+}
+.torrent-search--list__overview {
+    grid-area: overview;
+    display: grid
+;
+    place-items: center left;
+}
+*, :before, :after {
+    box-sizing: border-box;
+}
+user agent stylesheet
+td {
+    display: table-cell;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+}
+.data-table {
+    width: 100%;
+    border: 0;
+    color: var(--data-table-fg);
+    border-collapse: collapse;
+}
+user agent stylesheet
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+body {
+    font-size: 16px;
+    line-height: 1.46666667;
+    color: var(--body-fg);
+    background: var(--body-bg);
+}
