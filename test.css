@@ -794,8 +794,12 @@ a[href*="https://darkpeers.org/donations"] {
 .top-nav {
   background-color: #0b0b0b !important;
 }
-.data-table td * {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+.torrent-search--list__overview>div {
+    display: grid;
+    grid-template-areas:
+        "name name"
+        "uploader icons";
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: .5rem;
 }
