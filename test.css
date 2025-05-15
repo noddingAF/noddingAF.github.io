@@ -794,8 +794,14 @@ a[href*="https://darkpeers.org/donations"] {
 .top-nav {
   background-color: #0b0b0b !important;
 }
+.data-table td * {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
 .torrent-search--list__overview>div {
-    display: grid;
+    display: grid
+;
     grid-template-areas:
         "name name"
         "uploader icons";
@@ -803,3 +809,42 @@ a[href*="https://darkpeers.org/donations"] {
     align-items: center;
     gap: .5rem;
 }
+* {
+    /* box-sizing: border-box; */
+}
+*, :before, :after {
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+.data-table>tr>td, .data-table>thead>tr>td, .data-table>tbody>tr>td, .data-table>tfoot>tr>td {
+    padding: 7px;
+    font-size: 14px;
+}
+.data-table td, .data-table th {
+    font-size: 16px;
+    line-height: normal;
+    word-spacing: normal;
+    letter-spacing: normal;
+    margin: 0;
+    padding: 8px;
+    vertical-align: middle;
+    white-space: normal;
+}
+.data-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    font-size: 0;
+    line-height: 0;
+    word-spacing: -999px;
+    letter-spacing: -999px;
+}
+user agent stylesheet
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
