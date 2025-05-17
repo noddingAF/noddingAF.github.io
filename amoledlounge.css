@@ -395,6 +395,10 @@ body {
 #confirm-dialog {
     background: #040404;
 }
+#form::before {
+    background: #060607;
+}
+
 
 :root {
 --chat-bubble-background: #121212;
