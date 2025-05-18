@@ -196,7 +196,7 @@ body {
 .data-table-wrapper {
     background-color: #393322;
 }
-.quick-search__inputs {
+.quick-search__input {
     background-color: #edc74a12;
 }
 .quick-search__result-link, .quick-search__result--empty, .quick-search__result--keep-typing {
