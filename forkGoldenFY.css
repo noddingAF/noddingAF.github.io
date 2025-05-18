@@ -217,6 +217,9 @@ body {
 .quick-search__radio-label:focus-within .quick-search__radio-icon {
 		background-color: #cfa63a;
 }
+.quick-search__result-link, .quick-search__result--empty, .quick-search__result--default {
+		background-color: #3a321f;
+}
 .chatbox-message {
     background-color: #5e5123;
 }
