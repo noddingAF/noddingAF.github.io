@@ -297,4 +297,9 @@ li.top-nav__dropdown a[title*="filled"] {
 
     --secondary-nav-tab-active-text-decoration: underline #d9b960eb 2px;
     --secondary-nav-tab-hover-text-decoration: underline #cdb163eb 2px;
+
+    --breadcrumb-fg: #ffa200;
+    --breadcrumb-active-fg: #ffa200;
+    --breadcrumb-hover-fg: #ffa200;
 }
+
