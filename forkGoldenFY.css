@@ -285,6 +285,9 @@ li.top-nav__dropdown a[title*="filled"] {
 .bbcode-rendered.bbcode-rendered {
   background-color: #393322;
 }
+.bbcode-rendered.bbcode-rendered tr:nth-child(2n), .bbcode-rendered.bbcode-rendered tr:nth-child(2n) td {
+    background-color: #5f501f;
+}
 .comment__header {
   background-color: #493a1d;
 }
