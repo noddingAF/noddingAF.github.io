@@ -311,8 +311,11 @@ li.top-nav__dropdown a[title*="filled"] {
     --select-border: 1px solid #756a4ee3;
     --input-text-border: 1px solid #756a4ee3;
     --fieldset-border: 1px solid #756a4ee3;
+    --textarea-border: 1px solid #756a4ee3;
     --select-fg: #c9ba90;
     --label-fg: #c9ba90;
+
+    --bbcode-input-body-bg: #393322;
 
 
 }
