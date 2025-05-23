@@ -291,6 +291,9 @@ li.top-nav__dropdown a[title*="filled"] {
 .compact-search {
     background-color: #393322;
 }
+.torrent-search--list__resolution-and-type {
+	background-color: #8679539e;
+}
 
 
 :root {
@@ -298,9 +301,9 @@ li.top-nav__dropdown a[title*="filled"] {
     --secondary-nav-tab-active-text-decoration: underline #d9b960eb 2px;
     --secondary-nav-tab-hover-text-decoration: underline #cdb163eb 2px;
 
-    --breadcrumb-fg: #ffa200;
-    --breadcrumb-active-fg: #ffa200;
-    --breadcrumb-hover-fg: #ffa200;
+    --breadcrumb-fg: #e5ae50;
+    --breadcrumb-active-fg: #e5ae50;
+    --breadcrumb-hover-fg: #e5ae50;
 	
     --input-text-border-active: 2px solid #ffa200;
     --input-text-border-radius: 5px;
