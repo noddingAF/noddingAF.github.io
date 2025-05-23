@@ -309,10 +309,10 @@ li.top-nav__dropdown a[title*="filled"] {
 
 
     --select-border: 1px solid #f5d57d;
-    --input-text-border: 1px solid #f5d57d;
+    --input-text-border: 1px solid #756a4ee3;
     --fieldset-border: 1px solid #f5d57d;
-    --select-fg: #f5d57d;
-    --label-fg: #f5d57d;
+    --select-fg: #c9ba90;
+    --label-fg: #c9ba90;
 
 
 }
