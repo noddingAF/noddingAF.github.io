@@ -302,7 +302,7 @@ li.top-nav__dropdown a[title*="filled"] {
     --breadcrumb-active-fg: #ffa200;
     --breadcrumb-hover-fg: #ffa200;
 
-    --input-text-border-active: #ffa200;
+    --input-text-border-active: 2px solid #ffa200;
     --label-fg-active: #ffa200;
     --select-border-active: #ffa200;
 
