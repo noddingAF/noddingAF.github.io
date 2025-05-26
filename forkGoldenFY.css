@@ -296,10 +296,10 @@ li.top-nav__dropdown a[title*="filled"] {
 }
 .torrent-search--list__resolution-and-type {
 	background-color: #62583b00;
-	color: #e5ae50;
+	color: #dbb677;
 }
 .category__icon {
-	color: #e5ae50;
+	color: #dbb677;
 }
 .bbcode-rendered.bbcode-rendered pre {
 	background-color: #4f4e4c3b;
@@ -310,9 +310,9 @@ li.top-nav__dropdown a[title*="filled"] {
     --secondary-nav-tab-active-text-decoration: underline #d9b960eb 2px;
     --secondary-nav-tab-hover-text-decoration: underline #cdb163eb 2px;
 
-    --breadcrumb-fg: #e5ae50;
-    --breadcrumb-active-fg: #e5ae50;
-    --breadcrumb-hover-fg: #e5ae50;
+    --breadcrumb-fg: #dbb677;
+    --breadcrumb-active-fg: #dbb677;
+    --breadcrumb-hover-fg: #dbb677;
 	
     --input-text-border-active: 2px solid #ffa200;
     --input-text-border-radius: 5px;
