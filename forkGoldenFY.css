@@ -295,7 +295,11 @@ li.top-nav__dropdown a[title*="filled"] {
     background-color: #393322;
 }
 .torrent-search--list__resolution-and-type {
-	background-color: #8679539e;
+	background-color: #8679539e00;
+	color: #e5ae50;
+}
+.category__icon {
+	color: #e5ae50;
 }
 .bbcode-rendered.bbcode-rendered pre {
 	background-color: #4f4e4c3b;
