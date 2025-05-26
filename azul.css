@@ -860,3 +860,6 @@ body>header {
 li.top-nav__dropdown a[title*="filled"] {
     display: none !important;
 }
+.top-nav__icon-bar>li>a>i {
+    background-color: #16274bc9;
+}
