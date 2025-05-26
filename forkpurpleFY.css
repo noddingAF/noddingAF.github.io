@@ -443,3 +443,10 @@ li.top-nav__dropdown a[title*="filled"] {
 #chatbody li:has(.chatbox-message__address a[href="/users/System"]) {
     display: none !important;
 }
+.bbcode-rendered.bbcode-rendered pre {
+    background-color: #4a557333;
+}
+.torrent-search--list__resolution-and-type {
+	background-color: #3d2f4a;
+}
+
