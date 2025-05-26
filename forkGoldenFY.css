@@ -297,7 +297,9 @@ li.top-nav__dropdown a[title*="filled"] {
 .torrent-search--list__resolution-and-type {
 	background-color: #8679539e;
 }
-
+.bbcode-rendered.bbcode-rendered pre {
+	background-color: #4f4e4c3b;
+}
 
 :root {
 
