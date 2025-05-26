@@ -863,3 +863,9 @@ li.top-nav__dropdown a[title*="filled"] {
 .top-nav__icon-bar>li>a>i {
     background-color: #16274bc9;
 }
+.compact-search {
+    background-color: #171f2c;
+}
+.form__select option {
+	background-color: #0a111b;
+}
