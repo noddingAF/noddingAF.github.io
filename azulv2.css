@@ -755,3 +755,6 @@ li.top-nav__dropdown a[title*="filled"] {
 .bbcode-rendered.bbcode-rendered pre {
     background-color: #4a557333;
 }
+.compact-search {
+    background-color: #171f2c;
+}
