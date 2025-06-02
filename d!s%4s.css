@@ -1,0 +1,3 @@
+li.top-nav__dropdown a[title*="filled"] {
+    display: none !important;
+}
