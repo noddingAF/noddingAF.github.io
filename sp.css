@@ -12,6 +12,6 @@
 }
 
 
-.top-nav__ratio-bar, .top-nav__ratio-bar a
+.top-nav__ratio-bar, .top-nav__ratio-bar a {
   display: none;
 }
