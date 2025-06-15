@@ -10,3 +10,8 @@
 .quick-search__input {
   display: none;
 }
+
+
+.top-nav__ratio-bar, .top-nav__ratio-bar a
+  display: none;
+}
