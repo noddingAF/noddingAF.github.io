@@ -1,0 +1,6 @@
+.page__home > article:nth-of-type(1) > p:nth-of-type(1) {
+    display: none !important;
+}
+.quick-search__input {
+  display: none;
+}
