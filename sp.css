@@ -1,3 +1,9 @@
+.panelV2.blocks__latest-topics > .panel__header > .panel__heading,
+.panelV2.blocks__latest-topics > .panel__body,
+.panelV2.blocks__posts > .panel__header > .panel__heading,
+.panelV2.blocks__posts > .panel__body {
+    display: none;
+}
 .page__home > article:nth-of-type(1) > p:nth-of-type(1) {
     display: none !important;
 }
