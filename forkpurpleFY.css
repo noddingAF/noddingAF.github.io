@@ -460,20 +460,20 @@ li.top-nav__dropdown a[title*="filled"] {
 
 
 .special-event-alert {
-    background: linear-gradient(135deg, #2b2531 0%, #332641 100%);
+	background: linear-gradient(135deg, #2b2531 0%, #332641 100%);
 }
     
 .alerts {
-    background-color: var(--alert-gap-color);
+	background-color: var(--alert-gap-color);
 }
     
 .progress-bar {
-    height: 100%;
-    background: linear-gradient(90deg, #b56feb, #ead0ff);
+	height: 100%;
+	background: linear-gradient(90deg, #b56feb, #ead0ff);
 }
     
 .bolt-icon {
-    color: #b56feb;
+	color: #b56feb;
 }
     
 .alerts {
