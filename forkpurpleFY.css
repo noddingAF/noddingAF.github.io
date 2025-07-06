@@ -460,8 +460,10 @@ li.top-nav__dropdown a[title*="filled"] {
 
 
 .special-event-alert {
-	background: linear-gradient(135deg, #2b2531 0%, #332641 100%);
+    background: linear-gradient(135deg, #514261 0%, #514261 100%);
 }
+
+
     
 .alerts {
 	background-color: var(--alert-gap-color);
