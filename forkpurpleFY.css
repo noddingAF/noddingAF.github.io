@@ -464,15 +464,3 @@ li.top-nav__dropdown a[title*="filled"] {
 	background-color: #453d4d;
 }
 
-.special-event-alert {
-    background: linear-gradient(135deg, #6a0dad 0%, #3b006a 100%);
-    color: #f0f0f0;
-    padding: 1rem;
-    border-radius: 12px;
-    margin: 1rem 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    border: 2px solid #5a0ca8;
-    position: relative;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
