@@ -1,0 +1,5 @@
+/* Hide Unit3d System Messages */
+
+#chatbody li:has(.chatbox-message__address a[href="/users/System"]) {
+    display: none !important;
+}
