@@ -464,3 +464,8 @@ li.top-nav__dropdown a[title*="filled"] {
 	background-color: #453d4d;
 }
 
+a[href="https://fearnopeer.com/donations"] {
+    display: none !important;
+}
+
+
