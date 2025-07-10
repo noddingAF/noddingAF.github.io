@@ -436,10 +436,6 @@ body {
     background-color: #2d2733;
 }
 
-li.top-nav__dropdown a[title*="filled"] {
-    display: none !important;
-}
-
 #chatbody li:has(.chatbox-message__address a[href="/users/System"]) {
     display: none !important;
 }
