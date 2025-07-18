@@ -460,7 +460,7 @@ body {
 	background-color: #453d4d;
 }
 
-a[href="https://fearnopeer.com/donations"] {
+li.top-nav__dropdown {
     display: none !important;
 }
 
