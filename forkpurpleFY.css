@@ -481,6 +481,9 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
 .profile-panel-2026__header {
     background: #271f2f;
 }
+.profile-table-2026 tfoot {
+    background: #27182b;
+}
 .profile-table-2026 thead {
     background: #271f2f;
 }
@@ -490,4 +493,13 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
 .profile-hero-2026 {
     position: relative;
     background: #221a24;
+}
+.profile-stats-ribbon-2026 {
+    background: #221a24;
+}
+.torrent-search--list__row:nth-child(2n) td, .torrent-search--list__no-poster-row:nth-child(2n) td {
+    background-color: #221a24 !important;
+}
+.torrent-search--list__row:nth-child(odd) td, .torrent-search--list__no-poster-row:nth-child(odd) td {
+    background-color: #1b1920 !important;
 }
