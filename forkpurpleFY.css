@@ -501,3 +501,6 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
 .torrent-search--list__row:nth-child(odd) td, .torrent-search--list__no-poster-row:nth-child(odd) td {
     background-color: #1b1920 !important;
 }
+.torrent-search--list__row:hover td, .torrent-search--list__no-poster-row:hover td {
+    background-color: #2d2733 !important;
+}
