@@ -475,3 +475,19 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
     background: #271f2f;
 }
 
+.profile-table-2026 tbody tr:nth-child(odd) {
+    background: #27182b;
+}
+.profile-panel-2026__header {
+    background: #271f2f;
+}
+.profile-table-2026 thead {
+    background: #271f2f;
+}
+.profile-panel-2026 {
+    background: #221a24;
+}
+.profile-hero-2026 {
+    position: relative;
+    background: #221a24;
+}
