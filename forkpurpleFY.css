@@ -464,13 +464,11 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
     display: none !important;
 }
 
+/* 2026 */
 
 .profile-stats-list-2026__row:nth-child(odd) {
     background: #221a24;
 }
-
-
-
 .profile-stats-list-2026__row:nth-child(2n) {
     background: #271f2f;
 }
@@ -498,7 +496,7 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
     background: #221a24;
 }
 .torrent-search--list__row:nth-child(2n) td, .torrent-search--list__no-poster-row:nth-child(2n) td {
-    background-color: #221a24 !important;
+    background-color: #2525255e !important;
 }
 .torrent-search--list__row:nth-child(odd) td, .torrent-search--list__no-poster-row:nth-child(odd) td {
     background-color: #1b1920 !important;
