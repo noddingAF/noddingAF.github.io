@@ -1,0 +1,17 @@
+.top-nav__telegram-item>a {
+    color: #666;
+}
+}
+a:hover {
+  color: #976113;
+}
+
+.ratio-bar__points i, .ratio-bar__tokens i {
+    color: #ff8401;
+}
+.panel__heading {
+    color: #fff;
+}
+.torrent-search--list__name:visited {
+    color: #e9ff18;
+}
