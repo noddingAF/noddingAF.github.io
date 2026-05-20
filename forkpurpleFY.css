@@ -465,11 +465,11 @@ li:has(a[href="https://fearnopeer.com/donations"]) {
 }
 
 
-
-
 .profile-stats-list-2026__row:nth-child(odd) {
     background: #221a24;
 }
+
+
 
 .profile-stats-list-2026__row:nth-child(2n) {
     background: #271f2f;
