@@ -314,10 +314,8 @@ li.top-nav__dropdown a[title*="filled"] {
 .cat-filter-bar {
     background: #393322 !important;
 }
-@media only screen and (max-width: 767px) {
-    .cat-filter-bar {
-		background: #393322:
-    }
+element.style {
+    background: #393322 !important;
 }
 
 
