@@ -314,6 +314,9 @@ li.top-nav__dropdown a[title*="filled"] {
 .cat-filter-bar {
     background: #393322 !important;
 }
+#cat-filter-bar.hidden-bar {
+    display: none !important;
+}
 
 
 
