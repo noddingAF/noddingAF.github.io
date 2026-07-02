@@ -314,10 +314,12 @@ li.top-nav__dropdown a[title*="filled"] {
 .cat-filter-bar {
     background: #393322 !important;
 }
-element.style {
-    background: #393322 !important;
+#cat-filter-bar {
+    background: rgb(57, 51, 34) !important;
+    position: static !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
 }
-
 
 
 :root {
