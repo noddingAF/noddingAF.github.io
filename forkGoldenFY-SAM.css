@@ -311,6 +311,13 @@ li.top-nav__dropdown a[title*="filled"] {
 .profile-section__header {
     background-color: #1f1b14;
 }
+.cat-filter-bar {
+    background: #393322;
+}
+
+element.style {
+    background: #393322;
+}
 
 :root {
 
