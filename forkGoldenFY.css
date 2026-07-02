@@ -304,6 +304,12 @@ li.top-nav__dropdown a[title*="filled"] {
 .bbcode-rendered.bbcode-rendered pre {
 	background-color: #4f4e4c3b;
 }
+.key-value__group:nth-child(odd):not(.key-value__group--nested .key-value__group), .key-value__group--nested:nth-child(odd) {
+    background-color: #393322 !important;
+}
+.key-value__group:nth-child(2n):not(.key-value__group--nested .key-value__group), .key-value__group--nested:nth-child(2n) {
+    background-color: #393322 !important;
+}
 
 :root {
 
