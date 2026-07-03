@@ -794,6 +794,9 @@ a[href*="https://darkpeers.org/donations"] {
 .top-nav {
   background-color: #0b0b0b !important;
 }
+.top-nav__dropdown {
+    display: none !important;
+}
 
 
 
