@@ -926,10 +926,6 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     border: 2px solid #fda600;
 }
 
-/* Ancho del INPUT — sin foco y con foco */
-.quick-search:not(:focus-within) .quick-search__input {
-    max-width: 10.5rem !important;
-}
 
 .form__legend {
     background: none !important;
