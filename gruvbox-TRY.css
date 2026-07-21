@@ -964,5 +964,7 @@ span[style*="display: inline-flex"] {
 }
 .user-sidebar__toggle:hover {
     background: #40404000;
-    border-color: #fda600;
+}
+.user-sidebar__toggle--top-nav .user-sidebar__toggle-avatar {
+    border: 2px solid #fda600;
 }
