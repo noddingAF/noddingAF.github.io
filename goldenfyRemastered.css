@@ -1,0 +1,1524 @@
+/* ============================================================================
+   GOLDENFY REMASTERED — Samaritano
+   ----------------------------------------------------------------------------
+   Tema único, reconstruido a partir de:
+     - GoldenFY (tema original)              -> paleta base "dorada"
+     - overrides.css (css sam 2)              -> componentes activos
+     - familiar-sombrio.css (css sam 1)       -> widget del familiar
+   Metodología:
+     1. El framework del sitio (main.css / _galactic.css) consume ~400
+        variables CSS (--torrent-card-bg, --panel-bg, --top-nav-bg, etc).
+        En vez de pisar cientos de selectores sueltos con !important (como
+        hacía el GoldenFY viejo), este archivo re-define esas variables una
+        sola vez. Así TODAS las páginas del sitio (torrents, foro, perfil,
+        chat, paginación, etc.) heredan el tema dorado automáticamente,
+        aunque no estén en el HTML de muestra.
+     2. Se conserva una sección de "polish" para detalles que el framework
+        no expone por variable (degradés, scrollbars, hovers puntuales).
+     3. LIMPIEZA: se eliminaron bloques enteros que ya no existen en la
+        página (raspadinha/scratch card, rediseño "lst-profile", barra de
+        filtro por categoría "cat-filter-bar", el backdrop "capybara" de
+        media). Si en algún momento se vuelven a activar esas features,
+        conviene traerlas de nuevo por separado ya adaptadas a esta paleta.
+     4. Se corrigió una llave de cierre suelta (`}` huérfana) y reglas
+        duplicadas/contradictorias que traía el GoldenFY original
+        (.panel__heading declarado dos veces con colores distintos,
+        .data-table-wrapper con dos fondos distintos, etc).
+
+   Orden de carga sugerido (recomendado reemplazar en el <head>):
+     main.css -> _galactic.css -> _dark-yellow.css -> goldenfy-remastered.css
+   (ya no hace falta cargar el GoldenFY viejo ni overrides.css duplicado)
+   ============================================================================ */
+
+
+/* ============================================================================
+   1. PALETA BASE
+   ============================================================================ */
+
+:root {
+    /* Fondos (del más profundo al más claro) */
+    --gy-bg-0: #120e08;
+    /* body */
+    --gy-bg-1: #1b160e;
+    /* headers de panel, thead, top-nav */
+    --gy-bg-2: #241d13;
+    /* body de panel, cards */
+    --gy-bg-3: #2e2517;
+    /* filas pares, hover suave */
+    --gy-bg-4: #3a2f1c;
+    /* hover fuerte, dropdown items */
+    --gy-bg-5: #4a3c22;
+    /* activo / seleccionado / current */
+    /* Dorados (acento) */
+    --gy-gold-100: #f1e0ad;
+    --gy-gold-200: #e3c26a;
+    --gy-gold-300: #d4af37;
+    /* dorado principal */
+    --gy-gold-400: #b8912e;
+    --gy-gold-500: #8a6e25;
+    /* Texto */
+    --gy-text: #ddd0b0;
+    --gy-text-muted: #a8987a;
+    --gy-text-dim: #776b52;
+    --gy-text-bright: #fbf3de;
+    /* Bordes */
+    --gy-border: rgba(212, 175, 55, .16);
+    --gy-border-strong: rgba(212, 175, 55, .4);
+    /* Colores funcionales (se mantienen reconocibles, pero cálidos) */
+    --gy-ok: #5cb87d;
+    --gy-danger: #d9645f;
+    --gy-info: #5b9fd1;
+    --gy-warn: #e0a83f;
+    --gy-purple: #9d7fd6;
+}
+
+
+/* ============================================================================
+   2. VARIABLES DEL FRAMEWORK — tema dorado sitio completo
+   ============================================================================ */
+
+:root {
+    --text-color: var(--gy-text);
+    --body-bg: var(--gy-bg-0);
+    --body-fg: var(--gy-text);
+    --body-color: var(--gy-text);
+    /* Paleta de "colores" usada por tags/categorías/torrent-rows */
+    --color-dark-magenta: #4a3350;
+    --color-dark-green: #33402c;
+    --color-dark-blue: var(--gy-bg-0);
+    --color-dark-red: #402c2c;
+    --color-dark-purple: #37294f;
+    --color-red: var(--gy-danger);
+    --color-light-red: #e28a86;
+    --color-green: var(--gy-ok);
+    --color-light-green: #86cf9f;
+    --color-yellow: var(--gy-gold-300);
+    --color-light-yellow: var(--gy-gold-200);
+    --color-magenta: #a678c9;
+    --color-light-magenta: #c39fe0;
+    --color-purple: var(--gy-purple);
+    --color-light-purple: #bba6e8;
+    --color-blue: var(--gy-info);
+    --color-light-blue: #8fc1e8;
+    --color-bright-white: #fff;
+    --color-light-orange: #e2a56b;
+    --color-400: var(--gy-gold-200);
+    --color-A200: #ffe27a;
+    --color-A400: #ffd94d;
+    --scrollbar-color: #ffdd8a26;
+    /* Enlaces / texto utilitario */
+    --breadcrumb-fg: var(--gy-text-muted);
+    --breadcrumb-active-fg: var(--gy-gold-200);
+    --breadcrumb-hover-fg: var(--gy-gold-100);
+    --breadcrumb-inactive-text-decoration: none;
+    /* Botones */
+    --button-filled-bg: var(--gy-gold-300);
+    --button-filled-border: none;
+    --button-filled-border-radius: 9999px;
+    --button-filled-fg: #1b160e;
+    --button-outlined-bg: inherit;
+    --button-outlined-border: 1px solid var(--gy-border-strong);
+    --button-outlined-border-radius: 9999px;
+    --button-outlined-fg: currentColor;
+    --button-text-bg: inherit;
+    --button-text-border: none;
+    --button-text-border-radius: 5px;
+    --button-text-fg: currentColor;
+    --icon-button-bg: inherit;
+    --icon-button-border: none;
+    --icon-button-border-radius: 9999px;
+    --icon-button-fg: currentColor;
+    --icon-button-filled-bg: var(--gy-gold-300);
+    --icon-button-filled-fg: #1b160e;
+    --icon-button-filled-border: none;
+    /* Inputs / formularios */
+    --input-text-border: 1px solid var(--gy-border-strong);
+    --input-text-border-active: 2px solid var(--gy-gold-300);
+    --input-text-border-error: 1px solid var(--gy-danger);
+    --input-text-border-hover: 2px solid var(--gy-gold-400);
+    --input-text-border-radius: 5px;
+    --input-text-fg: var(--gy-text);
+    --input-text-padding: 12px;
+    --input-text-padding-active: 11px;
+    --input-text-padding-hover: 11px;
+    --textarea-border: 1px solid var(--gy-border-strong);
+    --textarea-border-active: 2px solid var(--gy-gold-300);
+    --textarea-border-error: 1px solid var(--gy-danger);
+    --textarea-border-hover: 2px solid var(--gy-gold-400);
+    --textarea-border-radius: 5px;
+    --textarea-fg: var(--gy-text);
+    --textarea-padding: 12px;
+    --textarea-padding-active: 11px;
+    --textarea-padding-hover: 11px;
+    --select-border: 1px solid var(--gy-border-strong);
+    --select-border-active: 2px solid var(--gy-gold-300);
+    --select-border-error: 1px solid var(--gy-danger);
+    --select-border-hover: 2px solid var(--gy-gold-400);
+    --select-border-radius: 5px;
+    --select-fg: var(--gy-text);
+    --select-padding: 11px 23px 11px 11px;
+    --select-padding-active: 10px 22px 10px 10px;
+    --select-padding-hover: 10px 22px 10px 10px;
+    --label-bg: var(--gy-bg-4);
+    --label-fg: var(--gy-text-muted);
+    --label-fg-active: var(--gy-gold-300);
+    --label-fg-error: var(--gy-danger);
+    --label-fg-hover: var(--gy-gold-200);
+    --legend-fg: var(--gy-text-muted);
+    --legend-bg: transparent;
+    --legend-border: none;
+    --legend-border-radius: 0;
+    --fieldset-bg: inherit;
+    --fieldset-fg: var(--gy-text-muted);
+    --fieldset-border-radius: 5px;
+    --fieldset-border: 1px solid var(--gy-border-strong);
+    --option-bg: var(--gy-bg-3);
+    --option-fg: var(--gy-text-muted);
+    /* Paneles */
+    --panel-bg: var(--gy-bg-2);
+    --panel-fg: var(--gy-text);
+    --panel-border: none;
+    --panel-body-border-radius: 0;
+    --panel-box-shadow: none;
+    --panel-border-radius: 6px;
+    --panel-head-bg: var(--gy-bg-1);
+    --panel-head-fg: var(--gy-gold-100);
+    --panel-head-border-radius: 6px 6px 0 0;
+    --panel-action-fg: var(--gy-text-muted);
+    --panel-group-fg: var(--gy-text-muted);
+    /* Top nav */
+    --top-nav-bg: var(--gy-bg-1);
+    --top-nav-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .35);
+    --top-nav-dropdown-fg: var(--gy-text-muted);
+    --top-nav-dropdown-hover-fg: var(--gy-gold-100);
+    --top-nav-dropdown-hover-bg: var(--gy-bg-4);
+    --top-nav-dropdown-hover-text-decoration: none;
+    --top-nav-dropdown-menu-bg: var(--gy-bg-2);
+    --top-nav-dropdown-menu-border: 1px solid var(--gy-border);
+    --top-nav-dropdown-menu-border-radius: 8px;
+    --top-nav-dropdown-menu-box-shadow: 0 12px 24px rgba(0, 0, 0, .5);
+    --top-nav-dropdown-menu-item-fg: var(--gy-text-muted);
+    --top-nav-dropdown-menu-item-bg: transparent;
+    --top-nav-dropdown-menu-item-hover-fg: var(--gy-gold-100);
+    --top-nav-dropdown-menu-item-hover-bg: var(--gy-bg-4);
+    --top-nav-dropdown-menu-item-hover-text-decoration: none;
+    --top-nav-dropdown-menu-item-icon-fg: var(--gy-text-muted);
+    --top-nav-dropdown-menu-item-icon-bg: var(--gy-bg-3);
+    --top-nav-ratio-bar-fg: var(--gy-text);
+    --top-nav-icon-bar-icon-bg: var(--gy-bg-3);
+    --top-nav-icon-bar-icon-fg: var(--gy-text-muted);
+    --top-nav-icon-bar-icon-border-radius: 50%;
+    --top-nav-icon-bar-icon-hover-bg: var(--gy-gold-400);
+    --top-nav-icon-bar-icon-hover-fg: #1b160e;
+    --top-nav-stats-fg: var(--gy-text-muted);
+    --top-nav-toggle-fg: var(--gy-text-muted);
+    /* Secondary nav (pestañas: buscar, en alta, rss, subir...) */
+    --secondary-nav-bg: var(--gy-bg-1);
+    --secondary-nav-box-shadow: 0 8px 14px 0 rgba(0, 0, 0, .35);
+    --secondary-nav-tab-fg: var(--gy-text-muted);
+    --secondary-nav-tab-bg: inherit;
+    --secondary-nav-tab-active-text-decoration: underline var(--gy-gold-300) 2px;
+    --secondary-nav-tab-hover-fg: var(--gy-gold-100);
+    --secondary-nav-tab-hover-bg: transparent;
+    --secondary-nav-tab-hover-text-decoration: underline var(--gy-gold-200) 2px;
+    --secondary-nav-tab-menu-bg: var(--gy-bg-3);
+    --secondary-nav-tab-menu-fg: inherit;
+    --secondary-nav-tab-menu-border: none;
+    --secondary-nav-tab-menu-border-radius: 6px;
+    --secondary-nav-tab-menu-box-shadow: 0 12px 17px rgba(0, 0, 0, .35);
+    /* Torrent card */
+    --torrent-card-bg: var(--gy-bg-2);
+    --torrent-card-fg: var(--gy-text);
+    --torrent-card-border: 1px solid var(--gy-border);
+    --torrent-card-head-bg: var(--gy-bg-1);
+    --torrent-card-head-fg: var(--gy-gold-100);
+    --torrent-card-link-fg: var(--gy-gold-100);
+    --torrent-card-genre-fg: var(--gy-text-muted);
+    /* Torrent group / lista */
+    --torrent-group-bg: var(--gy-bg-1);
+    --torrent-group-header-bg: var(--gy-bg-3);
+    --torrent-group-text: var(--gy-text-bright);
+    --torrent-group-text-muted: var(--gy-text-muted);
+    --torrent-group-table-stripe-even: rgba(212, 175, 55, .03);
+    --torrent-group-table-stripe-odd: rgba(212, 175, 55, .06);
+    --torrent-group-hover-brightness-emphasis: 1.15;
+    --torrent-group-chip-border: rgba(212, 175, 55, .08);
+    --torrent-row-fg: var(--gy-text);
+    --torrent-row-visited-fg: #c9b88a;
+    --torrent-row-sticky-bg: var(--gy-bg-4);
+    --torrent-row-format-fg: var(--gy-text-muted);
+    --torrent-row-format-bg: var(--gy-bg-3);
+    --torrent-row-buttons-fg: currentColor;
+    --torrent-row-seeders-fg: var(--gy-ok);
+    --torrent-row-leechers-fg: var(--gy-danger);
+    --torrent-row-completed-fg: var(--gy-gold-200);
+    --torrent-row-comments-fg: var(--gy-ok);
+    --torrent-row-internal-fg: #baaf92;
+    --torrent-row-personal-fg: var(--gy-purple);
+    --torrent-row-featured-fg: var(--gy-gold-200);
+    --torrent-row-freeleech-fg: var(--gy-gold-300);
+    --torrent-row-double-upload-fg: var(--gy-ok);
+    --torrent-row-sticky-fg: var(--gy-gold-100);
+    --torrent-row-highspeed-fg: var(--gy-danger);
+    --torrent-row-bumped-fg: var(--gy-gold-300);
+    --torrent-tag-fg: var(--gy-text-muted);
+    --torrent-tag-bg: transparent;
+    --torrent-tag-hover-fg: var(--gy-gold-100);
+    --torrent-tag-hover-bg: rgba(212, 175, 55, .1);
+    /* Data table */
+    --data-table-border-radius: 6px;
+    --data-table-fg: var(--gy-text);
+    --data-table-th-bg: var(--gy-bg-1);
+    --data-table-th-fg: var(--gy-gold-100);
+    --data-table-thead-border: none;
+    --data-table-tr-border: 1px solid var(--gy-border);
+    --data-table-tr-even-bg: var(--gy-bg-3);
+    --data-table-tr-hover-bg: var(--gy-bg-4);
+    --data-table-tr-odd-bg: var(--gy-bg-2);
+    --data-table-tfoot-border: none;
+    --data-table-padding: 10px;
+    /* Key-value (paneles de estadísticas) */
+    --key-value-border-radius: 4px;
+    --key-value-even-bg: var(--gy-bg-3);
+    --key-value-fg: var(--gy-text);
+    --key-value-odd-bg: var(--gy-bg-2);
+    --key-value-padding: 10px;
+    /* Paginación */
+    --paginate-bg: var(--gy-bg-1);
+    --paginate-bg-hover: var(--gy-gold-400);
+    --paginate-bg-current: var(--gy-bg-5);
+    --paginate-border-radius: 6px;
+    --paginate-fg: var(--gy-text-muted);
+    --paginate-fg-disabled: var(--gy-text-dim);
+    --paginate-divider: var(--gy-bg-3);
+    /* Quick search */
+    --quick-search-bg: var(--gy-bg-3);
+    --quick-search-fg: var(--gy-text-muted);
+    --quick-search-border: 1px solid transparent;
+    --quick-search-border-radius: 16px;
+    --quick-search-box-shadow: 0 4px 10px rgba(0, 0, 0, .35);
+    --quick-search-selector-fg: var(--gy-text-muted);
+    --quick-search-selector-hover-bg: var(--gy-bg-4);
+    --quick-search-selector-hover-fg: var(--gy-gold-100);
+    --quick-search-selector-selected-bg: var(--gy-bg-5);
+    --quick-search-selector-selected-fg: var(--gy-gold-100);
+    --quick-search-result-bg: var(--gy-bg-3);
+    --quick-search-result-fg: var(--gy-text);
+    --quick-search-result-hover-bg: var(--gy-bg-4);
+    --quick-search-result-hover-fg: var(--gy-gold-100);
+    --quick-search-result-image-border-radius: 5px;
+    --quick-search-result-year-fg: var(--gy-text-dim);
+    --quick-search-result-border: none;
+    --compact-search-bg: var(--gy-bg-2);
+    --compact-search-box-shadow: none;
+    --compact-search-border-radius: 8px;
+    --compact-search-fg: var(--gy-text);
+    --compact-search-padding: 5px;
+    /* Posts / comentarios / foro */
+    --post-bg: var(--gy-bg-2);
+    --post-fg: var(--gy-text);
+    --post-shadow: none;
+    --post-head-fg: var(--gy-text);
+    --post-head-bg: none;
+    --post-toolbar-bg: var(--gy-bg-1);
+    --post-toolbar-fg: var(--gy-text-muted);
+    --post-toolbar-hover-bg: var(--gy-bg-3);
+    --post-toolbar-hover-fg: var(--gy-gold-100);
+    --post-like-fg: var(--gy-ok);
+    --post-dislike-fg: var(--gy-danger);
+    --post-aside-bg: var(--gy-bg-3);
+    --post-aside-fg: var(--gy-text-muted);
+    --post-footer-fg: var(--gy-text);
+    --forum-tag-pinned-bg: rgba(212, 175, 55, .18);
+    --forum-tag-pinned-fg: var(--gy-gold-200);
+    --forum-tag-closed-bg: rgba(255, 255, 255, .06);
+    --forum-tag-closed-fg: var(--gy-text-muted);
+    --forum-tag-approved-bg: rgba(92, 184, 125, .18);
+    --forum-tag-approved-fg: var(--gy-ok);
+    --forum-tag-denied-bg: rgba(217, 100, 95, .18);
+    --forum-tag-denied-fg: var(--gy-danger);
+    --forum-tag-solved-bg: rgba(92, 184, 125, .18);
+    --forum-tag-solved-fg: var(--gy-ok);
+    --forum-tag-invalid-bg: rgba(217, 100, 95, .18);
+    --forum-tag-invalid-fg: var(--gy-danger);
+    --forum-tag-bug-bg: rgba(217, 100, 95, .18);
+    --forum-tag-bug-fg: var(--gy-danger);
+    --forum-tag-suggestion-bg: rgba(91, 159, 209, .18);
+    --forum-tag-suggestion-fg: var(--gy-info);
+    --forum-tag-implemented-bg: rgba(92, 184, 125, .18);
+    --forum-tag-implemented-fg: var(--gy-ok);
+    /* Subforum listing */
+    --subforum-listing-odd-bg: var(--gy-bg-2);
+    --subforum-listing-even-bg: transparent;
+    --subforum-listing-border: none;
+    /* bbcode */
+    --bbcode-input-header-bg: var(--gy-bg-1);
+    --bbcode-input-body-bg: var(--gy-bg-2);
+    --bbcode-input-bg: var(--gy-bg-2);
+    --bbcode-input-border: 1px solid var(--gy-border-strong);
+    --bbcode-input-border-radius: 5px;
+    --bbcode-rendered-fg-default: var(--gy-text);
+    --bbcode-rendered-text-primary: var(--gy-text);
+    --bbcode-rendered-fg-muted: var(--gy-text-muted);
+    --bbcode-rendered-fg-subtle: var(--gy-text-dim);
+    --bbcode-rendered-canvas-default: transparent;
+    --bbcode-rendered-canvas-subtle: var(--gy-bg-3);
+    --bbcode-rendered-border-default: var(--gy-border);
+    --bbcode-rendered-border-muted: var(--gy-border-strong);
+    --bbcode-rendered-neutral-muted: rgba(212, 175, 55, .08);
+    --bbcode-rendered-accent-fg: var(--gy-info);
+    --bbcode-rendered-accent-emphasis: #2260be;
+    --bbcode-rendered-attention-subtle: var(--gy-purple);
+    --bbcode-rendered-danger-fg: var(--gy-danger);
+    --bbcode-rendered-quote-bg: rgba(212, 175, 55, .07);
+    --bbcode-rendered-quote-border: var(--gy-gold-400);
+    /* Chat */
+    --chatbox-message-bg: var(--gy-bg-3);
+    --chatbox-button-fg: var(--gy-text-dim);
+    --chatbox-button-hover-fg: var(--gy-gold-200);
+    --chatbox-users-bg: var(--gy-bg-2);
+    --chatbox-tab-delete-fg: var(--gy-danger);
+    --chatbox-tab-delete-bg: var(--gy-bg-4);
+    --message-bubble-bg: var(--gy-bg-3);
+    --message-bubble-fg: currentColor;
+    --message-bubble-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    --message-bubble-border-radius: 20px;
+    --message-bubble-border: none;
+    --message-bubble-avatar-border-radius: 50%;
+    /* Dialogs / alerts / achievements */
+    --dialog-bg: var(--gy-bg-2);
+    --dialog-border: none;
+    --dialog-border-radius: 10px;
+    --dialog-box-shadow: 0 20px 40px rgba(0, 0, 0, .5);
+    --dialog-fg: var(--gy-text);
+    --dialog-head-bg: var(--gy-bg-1);
+    --dialog-head-fg: var(--gy-gold-100);
+    --alert-bg: var(--gy-bg-2);
+    --alert-fg: var(--gy-text-muted);
+    --alert-gap-color: var(--gy-border);
+    --alert-gap-width: 1px;
+    --achievement-fg: inherit;
+    --achievement-bg: var(--gy-bg-2);
+    --achievement-box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    --achievement-progress-bg: var(--gy-gold-300);
+    --article-card-bg: var(--gy-bg-2);
+    --article-card-fg: var(--gy-text-muted);
+    --article-card-head-fg: var(--gy-text-muted);
+    --article-card-time-fg: var(--gy-text-dim);
+    --article-box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+    --collection-fg: var(--gy-text-muted);
+    /* Meta (páginas de detalle: peli/serie) */
+    --meta-backdrop-filter: brightness(35%) blur(60px);
+    --meta-dropdown-backdrop-filter: brightness(2) blur(10px);
+    --meta-dropdown-bg: rgba(27, 22, 14, .85);
+    --meta-dropdown-backdrop-filter-hover: brightness(2) blur(10px);
+    --meta-dropdown-hover-bg: rgba(212, 175, 55, .12);
+    --meta-dropdown-fg: var(--gy-text-muted);
+    --meta-dropdown-hover-fg: var(--gy-gold-100);
+    --meta-description-fg: var(--gy-text-muted);
+    --meta-id-tag-fg: var(--gy-text);
+    --meta-id-tag-bg: transparent;
+    --meta-id-tag-hover-fg: var(--gy-gold-100);
+    --meta-id-tag-hover-bg: rgba(212, 175, 55, .12);
+    --meta-chips-heading-fg: var(--gy-text-muted);
+    --meta-chip-icon-fg: var(--gy-bg-1);
+    --meta-chip-icon-hover-bg: var(--gy-text-muted);
+    --meta-chip-icon-bg: var(--gy-gold-100);
+    --meta-chip-name-fg: var(--gy-text-bright);
+    --meta-chip-value-fg: var(--gy-text-muted);
+    --meta-chip-value-hover-fg: var(--gy-gold-100);
+    --meta-chip-backdrop-filter-hover: brightness(2) blur(10px);
+    --meta-chip-hover-bg: rgba(212, 175, 55, .12);
+    --meta-popup-bg: var(--gy-bg-1);
+    --meta-popup-fg: var(--gy-text-muted);
+    /* Otros */
+    --meter-fg: var(--gy-bg-3);
+    --meter-bg: var(--gy-bg-4);
+    --notification-read: transparent;
+    --notification-unread: var(--gy-gold-300);
+    --donation-border-color: var(--gy-bg-1);
+    --donation-box-shadow-color: var(--gy-bg-1);
+    --donation-primary-text-color: var(--gy-text);
+    --donation-secondary-text-color: var(--gy-text-muted);
+    --donation-background-color: var(--gy-bg-1);
+    --donation-price-days-color: var(--gy-gold-300);
+    --donation-chart-daily-bg: rgba(212, 175, 55, .18);
+    --donation-chart-daily-border: rgba(212, 175, 55, .8);
+    --donation-chart-monthly-bg: rgba(157, 127, 214, .18);
+    --donation-chart-monthly-border: rgba(157, 127, 214, .8);
+    --mediahub-card-bg: var(--gy-bg-1);
+    --mediahub-card-fg: var(--gy-text-muted);
+    --mediahub-card-hover-fg: var(--gy-gold-100);
+    --mediahub-card-border: none;
+    --mediahub-card-border-radius: 6px;
+    --mediahub-card-box-shadow: none;
+    --playlist-card-bg: var(--gy-bg-1);
+    --playlist-card-border: none;
+    --playlist-card-border-radius: 8px;
+    --playlist-card-box-shadow: 0 4px 10px rgba(0, 0, 0, .35);
+    --playlist-card-fg: var(--gy-text-muted);
+    --playlist-card-missing-image-bg: var(--gy-bg-3);
+    --playlist-card-missing-image-fg: var(--gy-text-muted);
+    --prize-bg: var(--gy-bg-1);
+    --prize-border-radius: 10px;
+    --prize-border: none;
+    --prize-box-shadow: 0 4px 10px rgba(0, 0, 0, .35);
+    --prize-fg: var(--gy-text-muted);
+    --prize-heading-fg: var(--gy-text-muted);
+    --prize-icon-primary-color: var(--gy-gold-300);
+    --prize-icon-secondary-color: var(--gy-gold-100);
+    --user-stat-card-bg: var(--gy-bg-1);
+    --user-stat-card-fg: var(--gy-text-muted);
+    --user-stat-card-border: none;
+    --user-stat-card-border-radius: 6px;
+    --user-stat-card-box-shadow: none;
+    --footer-bg: rgba(0, 0, 0, .3);
+    --footer-hr-fg: var(--gy-bg-3);
+}
+
+
+/* ============================================================================
+   3. TIPOGRAFÍA / ENLACES / TEXTO UTILITARIO
+   ============================================================================ */
+
+body {
+    background: var(--gy-bg-0);
+}
+
+a {
+    color: var(--gy-gold-200);
+}
+
+a:hover {
+    color: var(--gy-gold-100);
+}
+
+.text-bright {
+    color: var(--gy-text-bright);
+}
+
+a.text-bright:focus,
+a.text-bright:hover {
+    color: #fff;
+}
+
+.text-blue {
+    color: var(--gy-info);
+}
+
+.text-green {
+    color: var(--gy-ok);
+}
+
+.text-red,
+.text-danger {
+    color: var(--gy-danger);
+}
+
+.text-orange {
+    color: var(--gy-warn);
+}
+
+.text-purple {
+    color: var(--gy-purple);
+}
+
+.text-pink {
+    color: #d98fb0;
+}
+
+.text-muted {
+    color: var(--gy-text-muted);
+}
+
+.text-info,
+.footer__icon {
+    color: var(--gy-gold-200);
+}
+
+.text-info:hover {
+    color: var(--gy-gold-100);
+}
+
+i.torrent-icon {
+    color: var(--gy-info);
+}
+
+.badge-user {
+    border: 0;
+    box-shadow: none;
+    background-color: var(--gy-bg-3);
+    text-shadow: 1px 1px #000;
+    border-radius: 4px;
+}
+
+.badge-extra {
+    border: 1px solid var(--gy-border-strong);
+    border-radius: 4px;
+}
+
+.form__button--filled {
+    background: var(--gy-gold-300);
+    color: #1b160e;
+}
+
+.form__button:hover {
+    background: var(--gy-gold-200);
+    color: #1b160e;
+}
+
+.form__select option {
+    background-color: var(--gy-bg-2);
+}
+
+
+/* ============================================================================
+   4. AJUSTES PUNTUALES (lo que el framework no cubre por variable)
+   ============================================================================ */
+
+/* Cabeceras / cuerpos de tabla y panel: variantes con selectores directos que
+   siguen existiendo en el CSS compilado del sitio junto a las variables. */
+
+.data-table>tr>th,
+.data-table>thead>tr>th,
+.data-table>tbody>tr>th,
+.data-table>tfoot>tr>th {
+    background-color: var(--gy-bg-1);
+    border-bottom: 1px solid var(--gy-border-strong);
+}
+
+.data-table-wrapper {
+    background-color: var(--gy-bg-2);
+}
+
+.data-table tr:nth-child(odd)>td {
+    background-color: var(--gy-bg-2);
+}
+
+.data-table tr:nth-child(2n)>td {
+    background-color: var(--gy-bg-3);
+}
+
+.data-table>tr:hover>td,
+.data-table>thead>tr:hover>td,
+.data-table>tbody>tr:hover>td,
+.data-table>tfoot>tr:hover>td {
+    background-color: var(--gy-bg-4);
+}
+
+.panel__heading,
+.panel__header,
+.panel__actions,
+.panel__action {
+    background-color: var(--gy-bg-1);
+}
+
+.panel__tabs {
+    background-color: var(--gy-bg-3);
+}
+
+.panel__body,
+.panelV2,
+.bbcode-input__tab-pane {
+    background-color: var(--gy-bg-2);
+}
+
+.key-value__group:nth-child(odd) {
+    background-color: var(--gy-bg-2) !important;
+}
+
+.key-value__group:nth-child(2n) {
+    background-color: var(--gy-bg-3) !important;
+}
+
+.key-value__group dt:nth-child(4n+3),
+.key-value__group dd:nth-child(4n) {
+    background-color: var(--gy-bg-3) !important;
+}
+
+.subforum-listings__item:nth-child(2n+1) {
+    background-color: var(--gy-bg-2);
+}
+
+.subforum-listings__item:nth-child(2n) {
+    background-color: rgba(212, 175, 55, .04);
+}
+
+.secondary-nav {
+    background-color: var(--gy-bg-1);
+}
+
+.top-nav {
+    background-color: var(--gy-bg-1);
+}
+
+.top-nav__dropdown>ul {
+    background-color: var(--gy-bg-2);
+}
+
+.top-nav__dropdown>ul>li>a>i,
+.top-nav__dropdown>ul>li>form>button>i {
+    background-color: var(--gy-bg-3);
+}
+
+.top-nav__dropdown:hover>a,
+.top-nav__dropdown:focus-within>a,
+.top-nav__dropdown>ul>li>a:hover,
+.top-nav__dropdown>ul>li>a:focus,
+.top-nav__dropdown>ul>li>form>button:hover,
+.top-nav__dropdown>ul>li>form>button:focus {
+    background-color: var(--gy-bg-4);
+}
+
+.top-nav__icon-bar>li>a>i {
+    background-color: var(--gy-bg-3);
+}
+
+.top-nav__icon-bar>li>a:hover>i {
+    background-color: var(--gy-gold-400);
+}
+
+/* Paginación */
+
+.pagination,
+.pagination__previous,
+.pagination__next,
+.pagination__link,
+.pagination__ellipsis {
+    color: var(--gy-text);
+    background-color: transparent;
+}
+
+.pagination__current {
+    color: var(--gy-gold-100);
+    background-color: var(--gy-bg-5);
+}
+
+.pagination__link.pagination__link:hover,
+.pagination__previous:not(.pagination__previous--disabled):hover,
+.pagination__next:not(.pagination__next--disabled):hover,
+.pagination__ellipsis.pagination__ellipsis:hover {
+    color: #1b160e;
+    background-color: var(--gy-gold-300) !important;
+}
+
+/* Quick search: estado / radios */
+
+.quick-search__input {
+    background-color: rgba(212, 175, 55, .06);
+}
+
+.quick-search__result-link,
+.quick-search__result--empty,
+.quick-search__result--keep-typing,
+.quick-search__result--default {
+    background-color: var(--gy-bg-3);
+}
+
+.quick-search__result-link:hover,
+.quick-search__result-link:focus {
+    background-color: var(--gy-bg-4);
+}
+
+.quick-search__radio-label {
+    color: var(--gy-gold-200);
+}
+
+.quick-search__radio:checked~.quick-search__radio-icon::before {
+    background-color: rgba(212, 175, 55, .35);
+    color: #fff;
+}
+
+.quick-search__radio-icon:hover,
+.quick-search__radio-label:focus-within .quick-search__radio-icon {
+    background-color: var(--gy-gold-400);
+}
+
+/* Fixes funcionales de z-index / posición (siguen aplicando: quick-search y
+   secondary-nav existen en todas las páginas de listado/torrent). */
+
+.secondary-nav {
+    position: relative;
+    z-index: 100;
+}
+
+body>header {
+    z-index: 1001 !important;
+    position: sticky !important;
+    top: 0 !important;
+}
+
+.quick-search {
+    position: relative;
+    z-index: 10 !important;
+}
+
+.quick-search:focus-within {
+    z-index: 1100 !important;
+}
+
+.quick-search__results {
+    position: absolute;
+    z-index: 1100 !important;
+    display: none;
+}
+
+.quick-search:focus-within .quick-search__results {
+    display: block;
+}
+
+/* Torrent card / plot */
+
+.torrent-card {
+    background-image: linear-gradient(45deg, var(--gy-bg-2), rgba(212, 175, 55, .1));
+}
+
+.torrent-card__header,
+.torrent-card__footer {
+    background-color: var(--gy-bg-1);
+}
+
+.torrent-card__plot {
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 9px;
+    padding: 10px;
+    font-size: 12.2px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.torrent-card__plot::-webkit-scrollbar {
+    display: none;
+}
+
+.torrent-search--list__name:visited {
+    color: #c9b88a;
+}
+
+.torrent-search--list__sticky-row td {
+    background-color: var(--gy-bg-3) !important;
+}
+
+.torrent-search--list__resolution-and-type {
+    background-color: transparent;
+    color: var(--gy-gold-200);
+}
+
+.category__icon {
+    color: var(--gy-gold-200);
+}
+
+.similar-torrents__torrents {
+    border-color: var(--gy-border-strong);
+}
+
+.torrent-search--grouped__dropdown {
+    background-color: var(--gy-bg-2);
+}
+
+.cat-filter-bar {
+    background: var(--gy-bg-2) !important;
+}
+
+/* Posts / comentarios */
+
+.post__aside,
+.post__header,
+.comment__aside,
+.comment__toolbar {
+    background-color: var(--gy-bg-3);
+}
+
+.post__toolbar {
+    background-image: linear-gradient(45deg, var(--gy-bg-3) 15%, var(--gy-bg-1) 47%);
+}
+
+.post {
+    background-color: var(--gy-bg-2);
+}
+
+.comment__header {
+    background-color: var(--gy-bg-2);
+}
+
+.post>.post__aside>.user-tag,
+.user-tag__link {
+    display: block;
+    line-height: 1.5em;
+}
+
+/* bbcode renderizado */
+
+.bbcode-rendered.bbcode-rendered {
+    background-color: var(--gy-bg-2);
+}
+
+.bbcode-rendered.bbcode-rendered tr:nth-child(2n),
+.bbcode-rendered.bbcode-rendered tr:nth-child(2n) td {
+    background-color: var(--gy-bg-3);
+}
+
+.bbcode-rendered.bbcode-rendered pre {
+    background-color: rgba(0, 0, 0, .22);
+}
+
+/* Chat / alertas / artículos / perfil */
+
+.chatbox-message {
+    background-color: var(--gy-bg-3);
+}
+
+.topic-listings__item:nth-child(odd) {
+    background-color: var(--gy-bg-2);
+}
+
+.user-stat-card {
+    background: rgba(58, 47, 28, .6);
+}
+
+.alert {
+    padding: 5px;
+    background-color: rgba(27, 22, 14, .77);
+}
+
+.article-preview {
+    background-color: rgba(212, 175, 55, .06);
+}
+
+.profile-section__content {
+    background-color: var(--gy-bg-2);
+}
+
+.profile-section__header {
+    background-color: var(--gy-bg-1);
+}
+
+.panel-chat>.panel-body>#frame>.content {
+    background-color: var(--gy-bg-0);
+}
+
+/* Evita que el link "filled" fantasma del top-nav aparezca (deja de existir
+   visualmente en la página actual pero sigue viniendo del framework) */
+
+li.top-nav__dropdown a[title*="filled"] {
+    display: none !important;
+}
+
+
+/* ============================================================================
+   5. FEATURED CAROUSEL (torrents destacados) — activo en la página
+   ============================================================================ */
+
+:root {
+    --card-width: 250px;
+    --card-height: 560px;
+    --poster-height: 350px;
+    --card-gap: 10px;
+    --title-size: 1.95rem;
+    --plot-size: 1.05rem;
+    --meta-size: 1.15rem;
+    --plot-lines: 3;
+}
+
+.featured-carousel {
+    overflow-x: scroll !important;
+    scroll-behavior: smooth !important;
+    scroll-snap-type: none !important;
+}
+
+.featured-carousel__header,
+.featured-carousel__feature-details {
+    display: none !important;
+}
+
+.featured-carousel__slide {
+    margin-right: var(--card-gap) !important;
+    flex-shrink: 0 !important;
+    list-style: none !important;
+    scroll-snap-align: none !important;
+    min-width: unset !important;
+    max-width: unset !important;
+}
+
+.featured-carousel__slide .torrent-card {
+    width: var(--card-width) !important;
+    height: var(--card-height) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: var(--gy-bg-2) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--gy-border) !important;
+    overflow: hidden !important;
+    transition: all .3s ease !important;
+}
+
+.featured-carousel__slide .torrent-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, .7) !important;
+    border-color: var(--gy-gold-300) !important;
+}
+
+.featured-carousel__slide .torrent-card__aside,
+.featured-carousel__slide .torrent-card__figure {
+    width: 100% !important;
+    height: var(--poster-height) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.featured-carousel__slide .torrent-card__image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.featured-carousel__slide .torrent-card__body {
+    padding: 12px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    gap: 4px !important;
+}
+
+.featured-carousel__slide .torrent-card__header {
+    font-size: 12px !important;
+}
+
+.featured-carousel__slide .torrent-card__title {
+    font-size: var(--title-size) !important;
+    font-weight: bold !important;
+    color: var(--gy-gold-100) !important;
+    line-height: 1.2 !important;
+    height: 2.4em !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+}
+
+.featured-carousel__slide .torrent-card__plot {
+    display: -webkit-box !important;
+    -webkit-line-clamp: var(--plot-lines) !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: var(--plot-size) !important;
+    color: var(--gy-text-muted) !important;
+    line-height: 1.3 !important;
+    margin: 4px 0 !important;
+}
+
+.featured-carousel__slide .torrent-card__footer {
+    padding: 8px 12px !important;
+    background: rgba(0, 0, 0, .5) !important;
+    font-size: var(--meta-size) !important;
+    margin-top: auto !important;
+    border-top: 1px solid var(--gy-border) !important;
+}
+
+
+/* ============================================================================
+   6. WIDGET DEL FAMILIAR — recoloreado a la paleta dorada
+   ----------------------------------------------------------------------------
+   Antes usaba morados/corales/teales que no combinaban con el resto del
+   sitio. Se mantienen todas las animaciones y estructura, solo cambia la
+   paleta para que el globo de diálogo, el badge y el modal de evolución se
+   sientan parte del mismo tema.
+   ============================================================================ */
+
+:root {
+    --fs-purple: var(--gy-bg-1);
+    --fs-purple-d: var(--gy-bg-0);
+    --fs-coral: var(--gy-danger);
+    --fs-teal: var(--gy-gold-400);
+    --fs-gray: var(--gy-bg-2);
+    --fs-red: var(--gy-danger);
+    --fs-soul: var(--gy-gold-100);
+}
+
+#familiar-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9998;
+    width: 240px;
+    font-family: inherit;
+    transition: right .25s ease, bottom .25s ease, transform .25s ease, opacity .25s ease;
+    will-change: transform;
+    pointer-events: none;
+}
+
+#familiar-widget>* {
+    pointer-events: auto;
+}
+
+#familiar-widget.fs-minimized {
+    width: 64px;
+    height: 64px;
+    bottom: 20px;
+    right: 84px;
+}
+
+@media (max-width:768px) {
+    #familiar-widget {
+        bottom: 12px;
+        right: 12px;
+        width: 200px;
+    }
+
+    #familiar-widget.fs-minimized {
+        width: 56px;
+        height: 56px;
+        bottom: 12px;
+        right: 70px;
+    }
+}
+
+@keyframes fs-breathe {
+
+    0%,
+    100% {
+        transform: scale(1)
+    }
+
+    50% {
+        transform: scale(1.06)
+    }
+}
+
+@keyframes fs-float {
+
+    0%,
+    100% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-7px)
+    }
+}
+
+@keyframes fs-wing-l {
+
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    50% {
+        transform: rotate(-14deg)
+    }
+}
+
+@keyframes fs-wing-r {
+
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+
+    50% {
+        transform: rotate(14deg)
+    }
+}
+
+@keyframes fs-sway {
+
+    0%,
+    100% {
+        transform: rotate(-3deg)
+    }
+
+    50% {
+        transform: rotate(3deg)
+    }
+}
+
+@keyframes fs-blink {
+
+    0%,
+    92%,
+    100% {
+        transform: scaleY(1)
+    }
+
+    96% {
+        transform: scaleY(.1)
+    }
+}
+
+@keyframes fs-glow-pulse {
+
+    0%,
+    100% {
+        opacity: .4
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+@keyframes fs-possessed {
+
+    0%,
+    100% {
+        transform: translate(0, 0)
+    }
+
+    20% {
+        transform: translate(-2px, 1px)
+    }
+
+    40% {
+        transform: translate(2px, -1px)
+    }
+
+    60% {
+        transform: translate(-1px, -2px)
+    }
+
+    80% {
+        transform: translate(1px, 2px)
+    }
+}
+
+.fs-sprite {
+    transform-origin: center
+}
+
+.fs-mood-feliz .fs-sprite {
+    animation: fs-breathe 3s ease-in-out infinite
+}
+
+.fs-mood-triste .fs-sprite {
+    animation: fs-breathe 4.5s ease-in-out infinite
+}
+
+.fs-mood-irritado .fs-sprite {
+    animation: fs-breathe 1.4s ease-in-out infinite
+}
+
+.fs-mood-faminto .fs-sprite {
+    animation: fs-float 3.5s ease-in-out infinite;
+    opacity: .9
+}
+
+.fs-mood-dormindo .fs-sprite {
+    animation: fs-breathe 5s ease-in-out infinite
+}
+
+.fs-mood-possuido .fs-sprite {
+    animation: fs-possessed .4s linear infinite
+}
+
+.fs-eye-glow {
+    animation: fs-glow-pulse .8s ease-in-out infinite
+}
+
+.fs-eye-blink {
+    transform-origin: center;
+    animation: fs-blink 4s infinite
+}
+
+.fs-wing-left {
+    transform-origin: center;
+    animation: fs-wing-l .6s ease-in-out infinite
+}
+
+.fs-wing-right {
+    transform-origin: center;
+    animation: fs-wing-r .6s ease-in-out infinite
+}
+
+.fs-tail {
+    transform-origin: left bottom;
+    animation: fs-sway 2.8s ease-in-out infinite
+}
+
+@keyframes fs-poke {
+    0% {
+        transform: scale(1)
+    }
+
+    30% {
+        transform: scale(.9) rotate(-4deg)
+    }
+
+    60% {
+        transform: scale(1.08) rotate(3deg)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.fs-poked {
+    animation: fs-poke .45s ease-out
+}
+
+.fs-speech {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: var(--fs-purple-d);
+    color: var(--gy-gold-100);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-style: italic;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    border: 1px solid var(--gy-border);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.fs-speech.fs-show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-12px)
+}
+
+.fs-speech::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--fs-purple-d);
+}
+
+@keyframes fs-eat {
+    0% {
+        transform: scale(1)
+    }
+
+    25% {
+        transform: scale(1.15)
+    }
+
+    50% {
+        transform: scale(.95)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+.fs-eating {
+    animation: fs-eat .6s ease-in-out
+}
+
+.fs-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gy-gold-300);
+    color: #1b160e;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 18px;
+    text-align: center;
+    animation: fs-glow-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes fs-modal-in {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes fs-evolve-shake {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1)
+    }
+
+    10% {
+        transform: translate(-4px, 2px) scale(1.02)
+    }
+
+    30% {
+        transform: translate(4px, -2px) scale(1.04)
+    }
+
+    50% {
+        transform: translate(-3px, -3px) scale(1.06)
+    }
+
+    70% {
+        transform: translate(3px, 3px) scale(1.04)
+    }
+
+    90% {
+        transform: translate(-2px, 1px) scale(1.02)
+    }
+}
+
+@keyframes fs-flash {
+
+    0%,
+    100% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: .85
+    }
+}
+
+@keyframes fs-old-fade {
+    0% {
+        opacity: 1;
+        transform: scale(1)
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(.4)
+    }
+}
+
+@keyframes fs-new-rise {
+    0% {
+        opacity: 0;
+        transform: scale(.3) translateY(20px)
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.15) translateY(0)
+    }
+
+    100% {
+        transform: scale(1) translateY(0)
+    }
+}
+
+@keyframes fs-ring {
+    0% {
+        transform: scale(.2);
+        opacity: .9
+    }
+
+    100% {
+        transform: scale(2.4);
+        opacity: 0
+    }
+}
+
+#fs-evolve-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: radial-gradient(circle at center, rgba(212, 175, 55, .35), rgba(0, 0, 0, .92));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: fs-modal-in .4s ease-out;
+}
+
+.fs-evolve-stage {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.fs-evolve-flash {
+    position: absolute;
+    inset: -40px;
+    background: #fff;
+    border-radius: 50%;
+    animation: fs-flash 1.2s ease-in-out;
+    pointer-events: none
+}
+
+.fs-evolve-ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 3px solid var(--fs-soul);
+    border-radius: 50%;
+    animation: fs-ring 1.6s ease-out infinite
+}
+
+.fs-evolve-old {
+    position: absolute;
+    animation: fs-evolve-shake 1.2s ease-in-out, fs-old-fade .6s ease-in 1.2s forwards
+}
+
+.fs-evolve-new {
+    position: absolute;
+    opacity: 0;
+    animation: fs-new-rise .8s ease-out 1.6s forwards
+}
+
+.fs-evolve-title {
+    margin-top: 32px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 500;
+    opacity: 0;
+    animation: fs-modal-in .6s ease-out 2s forwards;
+    text-align: center
+}
+
+.fs-evolve-sub {
+    margin-top: 8px;
+    color: var(--fs-soul);
+    font-size: 14px;
+    opacity: 0;
+    animation: fs-modal-in .6s ease-out 2.3s forwards;
+    text-align: center
+}
+
+.fs-evolve-btn {
+    margin-top: 24px;
+    padding: 10px 28px;
+    background: var(--gy-gold-300);
+    color: #1b160e;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0;
+    animation: fs-modal-in .6s ease-out 2.6s forwards
+}
+
+.fs-evolve-btn:hover {
+    background: var(--gy-gold-200)
+}
+
+@media (prefers-reduced-motion:reduce) {
+
+    .fs-sprite,
+    .fs-wing-left,
+    .fs-wing-right,
+    .fs-tail,
+    .fs-eye-glow,
+    .fs-eye-blink,
+    .fs-badge {
+        animation: none !important
+    }
+}
