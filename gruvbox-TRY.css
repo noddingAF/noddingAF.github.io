@@ -980,14 +980,6 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     max-width: 12.6rem !important;
 }
 
-/* Ancho del CONTENEDOR (arregla el bug del cuadro fantasma) */
-.quick-search:not(:focus-within) {
-    max-width: 10.5rem !important;
-}
-
-.quick-search:focus-within {
-    max-width: 12.6rem !important;
-}
 
 /* Alto más chico y centrado vertical */
 .quick-search__input {
