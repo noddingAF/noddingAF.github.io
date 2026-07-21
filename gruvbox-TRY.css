@@ -955,3 +955,6 @@ span[style*="display: inline-flex"] {
     padding: 0 10px !important;
     margin: 0 !important;
 }
+.quick-search:focus-within .quick-search__input {
+    max-width: 340px !important;
+}
