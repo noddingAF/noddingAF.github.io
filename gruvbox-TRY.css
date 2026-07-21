@@ -922,9 +922,6 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
   display: none !important;
 }
 
-.user-sidebar__toggle--top-nav .user-sidebar__toggle-avatar {
-    border: 2px solid #fda600;
-}
 
 .form__legend {
     background: none !important;
@@ -967,4 +964,8 @@ span[style*="display: inline-flex"] {
 }
 .secondary-nav {
     background-color: #202020;
+}
+.user-sidebar__toggle:hover {
+    background: #40404000;
+    border-color: #fda600;
 }
