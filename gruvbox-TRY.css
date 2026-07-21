@@ -983,4 +983,6 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     padding-bottom: 0 !important;
     display: flex;
     align-items: center;
+    align-self: center !important;
 }
+
