@@ -967,21 +967,16 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
   display: none !important;
 }
 
-/* Search bar tipo "pastilla" rosada (como en la referencia) */
-.quick-search__input{
-  background-color: var(--gb-surface-1) !important;
-  color: var(--gb-text) !important;
-  border: 1px solid var(--gb-mauve) !important;
-  border-radius: 9999px !important;
-  padding: 8px 16px !important;
+.user-sidebar__toggle--top-nav .user-sidebar__toggle-avatar {
+    border: 2px solid #fda600;
 }
-.quick-search__input::placeholder{
-  color: var(--gb-subtext) !important;
+.quick-search:not(:focus-within) .quick-search__input {
+    max-width: 15rem;
 }
-.quick-search__input:hover{
-  border-color: var(--gb-pink) !important;
+.quick-search:not(:focus-within) .quick-search__input {
+    max-width: 10.5rem !important;
 }
-.quick-search__input:focus{
-  border-color: var(--gb-mauve) !important;
-  box-shadow: 0 0 0 3px rgba(211, 134, 155, .25) !important;
+
+.quick-search:focus-within .quick-search__input {
+    max-width: 12.6rem !important;
 }
