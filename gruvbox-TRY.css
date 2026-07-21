@@ -507,23 +507,46 @@ a:focus,a:hover{color:var(--gb-accent-light)}
 :where(.bbcode-rendered,.panel__body,.post,.comment__content,.notification,.article-card,.message) a:visited:not([style]){color:var(--gb-accent-soft)}
 :root{accent-color:var(--gb-accent)}
 
-a.form__button--filled.form__button--centered,a.form__button--filled.form__button--centered:link,a.form__button--filled.form__button--centered:visited{background:var(--gb-surface-1);color:var(--gb-accent-soft);border:1px solid var(--gb-accent-soft)}
-a.form__button--filled.form__button--centered:focus,a.form__button--filled.form__button--centered:hover{background:var(--gb-accent-strong);color:var(--gb-mantle);border:1px solid var(--gb-accent-strong)}
-button.form__button--filled.form__button--centered{background:var(--gb-accent);color:var(--gb-mantle)}
-button.form__button--filled.form__button--centered:hover{background:var(--gb-accent-strong)}
-.form__button,.form__standard-icon-button{color:var(--gb-subtext);transition:color .12s ease,background-color .12s ease}
-.form__button:hover,.form__standard-icon-button:hover{color:var(--gb-accent)}
-.form__button--text{color:var(--gb-accent)}
-a.fc-banner__cta.form__button--filled,a.fc-banner__cta.form__button--filled:link,a.fc-banner__cta.form__button--filled:visited,a.fc__cta.form__button--filled,a.fc__cta.form__button--filled:link,a.fc__cta.form__button--filled:visited{color:var(--gb-mantle)}
-a.fc-banner__cta.form__button--filled:focus,a.fc-banner__cta.form__button--filled:hover,a.fc__cta.form__button--filled:focus,a.fc__cta.form__button--filled:hover{background:var(--gb-accent-strong);color:var(--gb-mantle)}
-.achievements__group-title{color:var(--gb-subtext);border-color:var(--gb-surface-1)}
-.text-success{color:var(--gb-green)}
-.form__fieldset-checkbox-container .text-success{color:var(--gb-accent)}
-.text-info{color:var(--gb-subtext)}
-.form__checkbox{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1.5px solid var(--gb-overlay);border-radius:var(--gb-radius-xs);background-color:transparent;cursor:pointer;vertical-align:middle;margin-right:6px;transition:border-color .12s ease,background-color .12s ease;flex-shrink:0}
-.form__checkbox:hover{border-color:var(--gb-accent-strong)}
-.form__checkbox:checked{background-color:var(--gb-accent);border-color:var(--gb-accent);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231d2021'><path d='M6.173 11.591l-3.18-3.181 1.176-1.177 2.004 2.005 5.83-5.831 1.177 1.176z'/></svg>");background-repeat:no-repeat;background-position:center}
-.text-warning{color:var(--gb-accent-strong)}
+a.form__button--filled.form__button--centered,
+a.form__button--filled.form__button--centered:link,
+a.form__button--filled.form__button--centered:visited {
+    background: var(--cp-surface-1);
+    color: var(--cp-accent-soft);
+    border: 1px solid var(--cp-accent-soft)
+}
+
+a.form__button--filled.form__button--centered:focus,
+a.form__button--filled.form__button--centered:hover {
+    background: var(--cp-accent-strong);
+    color: var(--cp-base);
+    border: 1px solid var(--cp-accent-strong)
+}
+
+button.form__button--filled.form__button--centered {
+    background: var(--cp-accent);
+    color: var(--cp-base)
+}
+
+button.form__button--filled.form__button--centered:hover {
+    background: var(--cp-accent-strong)
+}
+
+a.fc-banner__cta.form__button--filled,
+a.fc-banner__cta.form__button--filled:link,
+a.fc-banner__cta.form__button--filled:visited,
+a.fc__cta.form__button--filled,
+a.fc__cta.form__button--filled:link,
+a.fc__cta.form__button--filled:visited {
+    color: var(--cp-base)
+}
+
+a.fc-banner__cta.form__button--filled:focus,
+a.fc-banner__cta.form__button--filled:hover,
+a.fc__cta.form__button--filled:focus,
+a.fc__cta.form__button--filled:hover {
+    background: var(--cp-accent-strong);
+    color: var(--cp-base)
+}
 
 .top-nav__icon-bar>li>a>svg,.top-nav__icon-bar>li>a>svg *{color:var(--gb-accent-strong);fill:var(--gb-accent-strong)}
 .top-nav__dropdown>a{border-radius:var(--gb-radius-md);transition:color .2s ease,background-color .2s ease}
