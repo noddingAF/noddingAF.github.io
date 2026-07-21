@@ -1,17 +1,4 @@
-/*!
- * ============================================================
- *  LAT — Gruvbox Dark Soft (tema completo, todo en un archivo)
- *  Cargar DESPUÉS del CSS original del sitio.
- * ============================================================
- */
 
-/*!
- * Gruvbox Dark Soft — canonical palette
- * Built for LAT (UNIT3D) following the same architecture as Capyppuccin:
- * one palette block (--gb-*) + one variable-mapping block (the actual
- * component variables the templates read) + core structural rules.
- * Edit the palette once; everything else inherits from it.
- */
 :root{
   /* -- surfaces (soft contrast, per gruvbox "soft" variant) -- */
   --gb-mantle: #1d2021;      /* darkest surface: top-nav, footer, secondary-nav */
@@ -972,4 +959,27 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
 }
 .announcement-banner--info a:hover{
   color: var(--gb-accent) !important;
+}
+/* Ocultar el bloque "Apoya A Lat-Team" del top-nav */
+.top-nav__dropdown:has(a[href*="/donations"]){
+  display: none !important;
+}
+
+/* Search bar tipo "pastilla" rosada (como en la referencia) */
+.quick-search__input{
+  background-color: var(--gb-surface-1) !important;
+  color: var(--gb-text) !important;
+  border: 1px solid var(--gb-mauve) !important;
+  border-radius: 9999px !important;
+  padding: 8px 16px !important;
+}
+.quick-search__input::placeholder{
+  color: var(--gb-subtext) !important;
+}
+.quick-search__input:hover{
+  border-color: var(--gb-pink) !important;
+}
+.quick-search__input:focus{
+  border-color: var(--gb-mauve) !important;
+  box-shadow: 0 0 0 3px rgba(211, 134, 155, .25) !important;
 }
