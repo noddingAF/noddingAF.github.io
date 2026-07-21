@@ -1,0 +1,956 @@
+/*!
+ * ============================================================
+ *  LAT — Gruvbox Dark Soft (tema completo, todo en un archivo)
+ *  Cargar DESPUÉS del CSS original del sitio.
+ * ============================================================
+ */
+
+/*!
+ * Gruvbox Dark Soft — canonical palette
+ * Built for LAT (UNIT3D) following the same architecture as Capyppuccin:
+ * one palette block (--gb-*) + one variable-mapping block (the actual
+ * component variables the templates read) + core structural rules.
+ * Edit the palette once; everything else inherits from it.
+ */
+:root{
+  /* -- surfaces (soft contrast, per gruvbox "soft" variant) -- */
+  --gb-mantle: #1d2021;      /* darkest surface: top-nav, footer, secondary-nav */
+  --gb-base: #282828;        /* body background */
+  --gb-surface-0: #32302f;   /* panels, cards, popups */
+  --gb-surface-1: #3c3836;   /* panel heads, table heads, hovers */
+  --gb-surface-2: #504945;   /* stronger hover / active surface */
+  --gb-overlay: #7c6f64;     /* borders, dividers, disabled */
+  --gb-overlay-soft: #665c54;/* subtler borders */
+
+  /* -- text -- */
+  --gb-text: #ebdbb2;
+  --gb-subtext: #bdae93;
+  --gb-muted: #928374;
+
+  /* -- accent (gruvbox yellow, the "flagship" hue) -- */
+  --gb-accent-soft: #f2e5bc;
+  --gb-accent-light: #fabd2f;
+  --gb-accent: #d79921;
+  --gb-accent-strong: #b57614;
+
+  /* -- supporting hues -- */
+  --gb-peach: #fe8019;
+  --gb-rosewater: #f8e5d0;
+  --gb-green: #b8bb26;
+  --gb-red: #fb4934;
+  --gb-blue: #83a598;
+  --gb-mauve: #d3869b;
+  --gb-teal: #8ec07c;
+  --gb-pink: #e59fa1;
+
+  /* -- radii (slightly more square than Capyppuccin's — gruvbox reads calmer/blockier) -- */
+  --gb-radius-xs: 3px;
+  --gb-radius-sm: 5px;
+  --gb-radius-md: 8px;
+  --gb-radius-lg: 12px;
+  --gb-radius-xl: 16px;
+
+  /* -- shadows / glow -- */
+  --gb-shadow-sm: 0 1px 3px rgba(0, 0, 0, .25);
+  --gb-shadow-md: 0 3px 10px rgba(0, 0, 0, .3);
+  --gb-shadow-lg: 0 6px 24px rgba(0, 0, 0, .35);
+  --gb-glow-soft: 0 0 12px rgba(250, 189, 47, .35);
+
+  --shadow-glow: 0 0 0 3px rgba(250, 189, 47, .45);
+  --swal-backdrop-bg: rgba(0, 0, 0, .55);
+  --swal-focus-ring: 0 0 0 3px rgba(215, 153, 33, .35);
+  --swal-input-focus-ring: 0 0 0 2px rgba(215, 153, 33, .25);
+}
+
+/*!
+ * Gruvbox Dark Soft — component variable mapping
+ * Every variable the LAT templates actually use (--body-bg, --panel-bg, etc.)
+ * mapped onto the palette above.
+ */
+:root{
+  --text-color: var(--gb-text);
+
+  /* legacy hue palette (still referenced by some vendor bits/badges) */
+  --color-blue: #458588;
+  --color-light-blue: var(--gb-blue);
+  --color-green: #98971a;
+  --color-light-green: var(--gb-green);
+  --color-yellow: var(--gb-accent);
+  --color-light-yellow: var(--gb-accent-light);
+  --color-magenta: #b16286;
+  --color-light-magenta: var(--gb-mauve);
+  --color-purple: #7c6f9c;
+  --color-light-purple: #a597c9;
+  --color-red: #cc241d;
+  --color-light-red: var(--gb-red);
+  --color-light-orange: var(--gb-peach);
+  --color-bright-white: #fbf1c7;
+  --color-dark-blue: #2b3335;
+  --color-dark-red: #3c2b26;
+  --color-dark-green: #383a2e;
+  --color-dark-magenta: #362a34;
+  --color-dark-purple: #2e2b3a;
+
+  --message-bubble-bg: var(--gb-surface-0);
+  --message-bubble-fg: currentColor;
+  --message-bubble-box-shadow: var(--gb-shadow-sm);
+  --message-bubble-border-radius: var(--gb-radius-xl);
+  --message-bubble-border: none;
+  --message-bubble-avatar-border-radius: 50%;
+
+  --achievement-fg: inherit;
+  --achievement-bg: var(--gb-surface-1);
+  --achievement-box-shadow: var(--gb-shadow-md);
+  --achievement-progress-bg: var(--gb-teal);
+
+  --alert-bg: var(--gb-surface-0);
+  --alert-fg: var(--gb-text);
+  --alert-gap-color: var(--gb-surface-1);
+  --alert-gap-width: 1px;
+
+  --article-card-bg: var(--gb-surface-0);
+  --article-card-fg: var(--gb-text);
+  --article-card-head-fg: var(--gb-text);
+  --article-card-time-fg: var(--gb-subtext);
+  --article-box-shadow: var(--gb-shadow-md);
+
+  --bbcode-input-header-bg: var(--gb-surface-0);
+  --bbcode-input-body-bg: var(--gb-surface-1);
+  --bbcode-input-border: 1px solid var(--gb-overlay-soft);
+  --bbcode-input-border-radius: var(--gb-radius-md);
+  --bbcode-rendered-fg-default: var(--gb-text);
+  --bbcode-rendered-fg-muted: var(--gb-subtext);
+  --bbcode-rendered-fg-subtle: var(--gb-overlay);
+  --bbcode-rendered-canvas-default: transparent;
+  --bbcode-rendered-canvas-subtle: var(--gb-surface-0);
+  --bbcode-rendered-border-default: var(--gb-surface-1);
+  --bbcode-rendered-border-muted: var(--gb-surface-1);
+  --bbcode-rendered-neutral-muted: rgba(124, 111, 100, .4);
+  --bbcode-rendered-accent-fg: var(--gb-accent);
+  --bbcode-rendered-accent-emphasis: var(--gb-accent-light);
+  --bbcode-rendered-attention-subtle: var(--gb-mauve);
+  --bbcode-rendered-danger-fg: var(--gb-red);
+  --bbcode-rendered-quote-bg: rgba(102, 92, 84, .35);
+  --bbcode-rendered-quote-border: var(--gb-accent);
+
+  --body-bg: var(--gb-base);
+  --body-fg: var(--gb-text);
+
+  --breadcrumb-fg: var(--gb-subtext);
+  --breadcrumb-active-fg: var(--gb-accent);
+  --breadcrumb-hover-fg: var(--gb-accent-light);
+  --breadcrumb-inactive-text-decoration: none;
+
+  --button-filled-bg: var(--gb-accent);
+  --button-filled-border: none;
+  --button-filled-border-radius: var(--gb-radius-md);
+  --button-filled-fg: var(--gb-mantle);
+  --button-outlined-bg: inherit;
+  --button-outlined-border: 1px solid var(--gb-accent);
+  --button-outlined-border-radius: var(--gb-radius-md);
+  --button-outlined-fg: var(--gb-accent);
+  --button-text-bg: inherit;
+  --button-text-border: none;
+  --button-text-border-radius: var(--gb-radius-md);
+  --button-text-fg: var(--gb-accent);
+
+  --chatbox-message-bg: var(--gb-surface-1);
+  --chatbox-button-fg: var(--gb-subtext);
+  --chatbox-button-hover-fg: var(--gb-accent);
+  --chatbox-users-bg: var(--gb-mantle);
+  --chatbox-tab-delete-fg: var(--gb-red);
+  --chatbox-tab-delete-bg: var(--gb-surface-1);
+
+  --compact-search-bg: var(--gb-surface-0);
+  --compact-search-box-shadow: var(--gb-shadow-sm);
+  --compact-search-border-radius: var(--gb-radius-md);
+  --compact-search-fg: var(--gb-text);
+  --compact-search-padding: 5px;
+
+  --comparison-divider-fg: var(--gb-accent);
+  --comparison-button-fg: var(--gb-accent);
+
+  --data-table-border-radius: var(--gb-radius-lg);
+  --data-table-fg: var(--gb-text);
+  --data-table-th-bg: var(--gb-surface-1);
+  --data-table-thead-border: 1px solid var(--gb-overlay-soft);
+  --data-table-tr-border: 1px solid var(--gb-surface-1);
+  --data-table-tr-even-bg: var(--gb-base);
+  --data-table-tr-hover-bg: var(--gb-surface-1);
+  --data-table-tr-odd-bg: var(--gb-surface-0);
+  --data-table-tfoot-border: 2px solid var(--gb-overlay-soft);
+
+  --dialog-bg: var(--gb-surface-0);
+  --dialog-border: none;
+  --dialog-border-radius: var(--gb-radius-lg);
+  --dialog-box-shadow: var(--gb-shadow-lg);
+  --dialog-fg: var(--gb-text);
+  --dialog-head-bg: var(--gb-surface-1);
+  --dialog-head-fg: var(--gb-text);
+
+  --donation-border-color: var(--gb-mantle);
+  --donation-box-shadow-color: var(--gb-mantle);
+  --donation-primary-text-color: var(--gb-text);
+  --donation-secondary-text-color: var(--gb-subtext);
+  --donation-background-color: var(--gb-mantle);
+  --donation-price-days-color: var(--gb-accent-light);
+  --donation-chart-daily-bg: rgba(142, 192, 124, .2);
+  --donation-chart-daily-border: rgba(142, 192, 124, 1);
+  --donation-chart-monthly-bg: rgba(211, 134, 155, .2);
+  --donation-chart-monthly-border: rgba(211, 134, 155, 1);
+
+  --fieldset-bg: inherit;
+  --fieldset-fg: var(--gb-subtext);
+  --fieldset-border-radius: var(--gb-radius-lg);
+  --fieldset-border: 1px solid var(--gb-overlay-soft);
+
+  --footer-bg: var(--gb-mantle);
+  --footer-hr-fg: var(--gb-surface-1);
+
+  --icon-button-bg: inherit;
+  --icon-button-border: none;
+  --icon-button-border-radius: var(--gb-radius-md);
+  --icon-button-fg: var(--gb-text);
+  --icon-button-filled-bg: var(--gb-accent-light);
+  --icon-button-filled-fg: var(--gb-mantle);
+  --icon-button-filled-border: none;
+
+  --input-text-border: 1px solid var(--gb-overlay-soft);
+  --input-text-border-active: 2px solid var(--gb-accent);
+  --input-text-border-error: 1px solid var(--gb-red);
+  --input-text-border-hover: 2px solid var(--gb-accent-strong);
+  --input-text-border-radius: var(--gb-radius-md);
+  --input-text-fg: var(--gb-text);
+  --input-text-padding: 12px;
+  --input-text-padding-active: 11px;
+  --input-text-padding-hover: 11px;
+
+  --key-value-border-radius: var(--gb-radius-lg);
+  --key-value-even-bg: var(--gb-surface-1);
+  --key-value-odd-bg: var(--gb-surface-0);
+  --key-value-fg: var(--gb-text);
+  --key-value-padding: 10px;
+
+  --label-bg: var(--gb-surface-1);
+  --label-fg: var(--gb-text);
+  --label-fg-active: var(--gb-accent);
+  --label-fg-error: var(--gb-red);
+  --label-fg-hover: var(--gb-accent-strong);
+
+  --legend-fg: var(--gb-subtext);
+  --legend-bg: var(--gb-surface-1);
+  --legend-border: none;
+  --legend-border-radius: var(--gb-radius-lg);
+
+  --mediahub-card-bg: var(--gb-surface-0);
+  --mediahub-card-fg: var(--gb-text);
+  --mediahub-card-hover-fg: var(--gb-accent);
+  --mediahub-card-border: none;
+  --mediahub-card-border-radius: var(--gb-radius-lg);
+  --mediahub-card-box-shadow: var(--gb-shadow-md);
+
+  --meta-backdrop-filter: brightness(30%) blur(100px);
+  --meta-dropdown-backdrop-filter: brightness(2) blur(10px);
+  --meta-dropdown-bg: var(--gb-surface-0);
+  --meta-dropdown-backdrop-filter-hover: brightness(2) blur(10px);
+  --meta-dropdown-hover-bg: var(--gb-surface-1);
+  --meta-dropdown-fg: var(--gb-text);
+  --meta-dropdown-hover-fg: var(--gb-accent);
+  --meta-description-fg: var(--gb-subtext);
+  --meta-id-tag-fg: var(--gb-text);
+  --meta-id-tag-bg: transparent;
+  --meta-id-tag-hover-fg: var(--gb-accent);
+  --meta-id-tag-hover-bg: rgba(235, 219, 178, .1);
+  --meta-chips-heading-fg: var(--gb-subtext);
+  --meta-chip-icon-fg: var(--gb-mantle);
+  --meta-chip-icon-hover-bg: var(--gb-accent-light);
+  --meta-chip-icon-bg: var(--gb-accent-strong);
+  --meta-chip-name-fg: var(--gb-text);
+  --meta-chip-value-fg: var(--gb-subtext);
+  --meta-chip-value-hover-fg: var(--gb-accent);
+  --meta-chip-backdrop-filter-hover: brightness(2) blur(10px);
+  --meta-chip-hover-bg: rgba(235, 219, 178, .1);
+  --meta-popup-bg: var(--gb-surface-0);
+  --meta-popup-fg: var(--gb-subtext);
+
+  --meter-fg: var(--gb-accent-strong);
+  --meter-bg: var(--gb-surface-1);
+
+  --notification-read: transparent;
+  --notification-unread: var(--gb-accent-light);
+
+  --option-bg: var(--gb-surface-0);
+  --option-fg: var(--gb-subtext);
+
+  --paginate-bg: var(--gb-surface-0);
+  --paginate-bg-hover: var(--gb-surface-1);
+  --paginate-bg-current: var(--gb-accent);
+  --paginate-border-radius: var(--gb-radius-md);
+  --paginate-fg: var(--gb-subtext);
+  --paginate-fg-disabled: var(--gb-overlay);
+  --paginate-divider: var(--gb-overlay);
+
+  --panel-action-fg: var(--gb-subtext);
+  --panel-border: none;
+  --panel-bg: var(--gb-surface-0);
+  --panel-fg: var(--gb-text);
+  --panel-body-border-radius: var(--gb-radius-lg);
+  --panel-box-shadow: var(--gb-shadow-md);
+  --panel-border-radius: var(--gb-radius-lg);
+  --panel-head-bg: var(--gb-surface-1);
+  --panel-head-fg: var(--gb-text);
+  --panel-head-border-radius: var(--gb-radius-lg);
+
+  --playlist-card-bg: var(--gb-mantle);
+  --playlist-card-border: none;
+  --playlist-card-border-radius: var(--gb-radius-md);
+  --playlist-card-box-shadow: var(--gb-shadow-md);
+  --playlist-card-fg: var(--gb-subtext);
+  --playlist-card-missing-image-bg: var(--gb-surface-1);
+  --playlist-card-missing-image-fg: var(--gb-subtext);
+
+  --prize-bg: var(--gb-mantle);
+  --prize-border-radius: var(--gb-radius-lg);
+  --prize-border: none;
+  --prize-box-shadow: var(--gb-shadow-md);
+  --prize-fg: var(--gb-text);
+  --prize-heading-fg: var(--gb-accent);
+  --prize-icon-primary-color: var(--gb-green);
+  --prize-icon-secondary-color: var(--gb-accent-soft);
+
+  --post-bg: var(--gb-surface-0);
+  --post-fg: var(--gb-text);
+  --post-shadow: var(--gb-shadow-md);
+  --post-head-fg: var(--gb-text);
+  --post-head-bg: transparent;
+  --post-toolbar-bg: var(--gb-surface-1);
+  --post-toolbar-fg: var(--gb-subtext);
+  --post-toolbar-hover-bg: var(--gb-surface-2);
+  --post-toolbar-hover-fg: var(--gb-accent);
+  --post-like-fg: var(--gb-green);
+  --post-dislike-fg: var(--gb-red);
+  --post-aside-bg: var(--gb-surface-0);
+  --post-aside-fg: var(--gb-subtext);
+  --post-footer-fg: var(--gb-text);
+
+  --quick-search-bg: var(--gb-surface-0);
+  --quick-search-fg: var(--gb-text);
+  --quick-search-border: 1px solid var(--gb-overlay-soft);
+  --quick-search-border-radius: var(--gb-radius-md);
+  --quick-search-box-shadow: var(--gb-shadow-sm);
+  --quick-search-selector-fg: var(--gb-subtext);
+  --quick-search-selector-hover-bg: var(--gb-surface-1);
+  --quick-search-selector-hover-fg: var(--gb-accent);
+  --quick-search-selector-selected-bg: var(--gb-accent-strong);
+  --quick-search-selector-selected-fg: var(--gb-mantle);
+  --quick-search-result-bg: var(--gb-surface-0);
+  --quick-search-result-fg: var(--gb-text);
+  --quick-search-result-hover-bg: var(--gb-surface-1);
+  --quick-search-result-hover-fg: var(--gb-accent);
+  --quick-search-result-image-border-radius: var(--gb-radius-xl);
+  --quick-search-result-year-fg: var(--gb-subtext);
+  --quick-search-result-border: none;
+
+  --scrollbar-color: var(--gb-surface-1);
+
+  --secondary-nav-bg: var(--gb-mantle);
+  --secondary-nav-box-shadow: var(--gb-shadow-sm);
+  --secondary-nav-tab-fg: var(--gb-text);
+  --secondary-nav-tab-bg: transparent;
+  --secondary-nav-tab-active-text-decoration: none;
+  --secondary-nav-tab-hover-fg: var(--gb-accent);
+  --secondary-nav-tab-hover-bg: var(--gb-surface-1);
+  --secondary-nav-tab-hover-text-decoration: none;
+  --secondary-nav-tab-menu-bg: var(--gb-surface-0);
+  --secondary-nav-tab-menu-fg: var(--gb-text);
+  --secondary-nav-tab-menu-border: none;
+  --secondary-nav-tab-menu-border-radius: var(--gb-radius-lg);
+  --secondary-nav-tab-menu-box-shadow: var(--gb-shadow-lg);
+
+  --select-border: 1px solid var(--gb-overlay-soft);
+  --select-border-active: 2px solid var(--gb-accent);
+  --select-border-error: 1px solid var(--gb-red);
+  --select-border-hover: 2px solid var(--gb-accent-strong);
+  --select-border-radius: var(--gb-radius-md);
+  --select-fg: var(--gb-text);
+  --select-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'><path fill='%23bdae93' d='M6 8l-1 1l5 5l5-5l-1-1l-4 4l-4-4z'/></svg>");
+  --select-padding: 11px 23px 11px 11px;
+  --select-padding-active: 10px 22px 10px 10px;
+  --select-padding-hover: 10px 22px 10px 10px;
+
+  --subforum-listing-odd-bg: var(--gb-surface-0);
+  --subforum-listing-even-bg: transparent;
+  --subforum-listing-border: 1px solid var(--gb-surface-1);
+
+  --textarea-border: 1px solid var(--gb-overlay-soft);
+  --textarea-border-active: 2px solid var(--gb-accent);
+  --textarea-border-error: 1px solid var(--gb-red);
+  --textarea-border-hover: 2px solid var(--gb-accent-strong);
+  --textarea-border-radius: var(--gb-radius-md);
+  --textarea-fg: var(--gb-text);
+  --textarea-padding: 12px;
+  --textarea-padding-active: 11px;
+  --textarea-padding-hover: 11px;
+
+  --top-nav-bg: var(--gb-mantle);
+  --top-nav-box-shadow: var(--gb-shadow-sm);
+  --top-nav-dropdown-fg: var(--gb-text);
+  --top-nav-dropdown-hover-fg: var(--gb-accent);
+  --top-nav-dropdown-hover-bg: var(--gb-surface-1);
+  --top-nav-dropdown-hover-text-decoration: none;
+  --top-nav-dropdown-menu-bg: var(--gb-surface-0);
+  --top-nav-dropdown-menu-border: none;
+  --top-nav-dropdown-menu-border-radius: var(--gb-radius-lg);
+  --top-nav-dropdown-menu-box-shadow: var(--gb-shadow-lg);
+  --top-nav-dropdown-menu-item-fg: var(--gb-text);
+  --top-nav-dropdown-menu-item-bg: transparent;
+  --top-nav-dropdown-menu-item-hover-fg: var(--gb-accent);
+  --top-nav-dropdown-menu-item-hover-bg: var(--gb-surface-1);
+  --top-nav-dropdown-menu-item-hover-text-decoration: none;
+  --top-nav-dropdown-menu-item-icon-fg: var(--gb-mantle);
+  --top-nav-dropdown-menu-item-icon-bg: var(--gb-accent-strong);
+  --top-nav-ratio-bar-fg: var(--gb-text);
+  --top-nav-icon-bar-icon-bg: var(--gb-surface-1);
+  --top-nav-icon-bar-icon-fg: var(--gb-text);
+  --top-nav-icon-bar-icon-border-radius: 50%;
+  --top-nav-icon-bar-icon-hover-bg: var(--gb-accent-light);
+  --top-nav-icon-bar-icon-hover-fg: var(--gb-mantle);
+  --top-nav-stats-fg: var(--gb-text);
+  --top-nav-toggle-fg: var(--gb-text);
+
+  --torrent-card-bg: var(--gb-surface-0);
+  --torrent-card-fg: var(--gb-text);
+  --torrent-card-border: none;
+  --torrent-card-head-bg: var(--gb-surface-1);
+  --torrent-card-head-fg: var(--gb-text);
+  --torrent-card-link-fg: var(--gb-accent);
+  --torrent-card-genre-fg: var(--gb-subtext);
+
+  --torrent-group-bg: var(--gb-surface-0);
+  --torrent-group-header-bg: var(--gb-surface-1);
+  --torrent-group-text: var(--gb-text);
+  --torrent-group-text-muted: var(--gb-subtext);
+  --torrent-group-table-stripe-even: rgba(235, 219, 178, .02);
+  --torrent-group-table-stripe-odd: rgba(235, 219, 178, .05);
+  --torrent-group-hover-brightness-emphasis: 1.15;
+  --torrent-group-chip-border: rgba(235, 219, 178, .08);
+
+  --torrent-row-fg: var(--gb-text);
+  --torrent-row-visited-fg: var(--gb-rosewater);
+  --torrent-row-sticky-bg: var(--gb-surface-1);
+  --torrent-row-sticky-fg: var(--gb-text);
+  --torrent-row-format-fg: var(--gb-subtext);
+  --torrent-row-format-bg: var(--gb-surface-1);
+  --torrent-row-buttons-fg: currentColor;
+  --torrent-row-seeders-fg: var(--gb-green);
+  --torrent-row-leechers-fg: var(--gb-red);
+  --torrent-row-completed-fg: var(--gb-blue);
+  --torrent-row-comments-fg: var(--gb-green);
+  --torrent-row-internal-fg: var(--gb-rosewater);
+  --torrent-row-personal-fg: var(--gb-mauve);
+  --torrent-row-featured-fg: var(--gb-pink);
+  --torrent-row-freeleech-fg: var(--gb-accent);
+  --torrent-row-double-upload-fg: var(--gb-teal);
+  --torrent-row-highspeed-fg: var(--gb-red);
+  --torrent-row-bumped-fg: var(--gb-accent-strong);
+
+  --torrent-tag-fg: var(--gb-text);
+  --torrent-tag-bg: transparent;
+  --torrent-tag-hover-fg: var(--gb-accent);
+  --torrent-tag-hover-bg: rgba(235, 219, 178, .1);
+
+  --user-stat-card-bg: var(--gb-surface-0);
+  --user-stat-card-fg: var(--gb-text);
+  --user-stat-card-border: none;
+  --user-stat-card-border-radius: var(--gb-radius-lg);
+  --user-stat-card-box-shadow: var(--gb-shadow-md);
+}
+
+/*!
+ * Gruvbox Dark Soft — legacy utility classes
+ * (recolored 1:1 from the previous theme file, no structural changes)
+ */
+.text-bright{color:#fbf1c7}
+a.text-bright:focus,a.text-bright:hover{color:var(--gb-accent-light)}
+.text-blue{color:var(--gb-blue)}
+.text-purple{color:var(--gb-mauve)}
+a{color:var(--color-blue)}
+a:hover{color:var(--gb-accent-light)}
+.text-green{color:var(--gb-green)}
+.text-muted{color:var(--gb-subtext)}
+.text-red{color:var(--gb-red)}
+.text-orange{color:var(--gb-peach)}
+.text-pink{color:var(--gb-pink)}
+.text-danger{color:var(--gb-red)}
+.text-gold{color:var(--gb-accent)}
+.badge-user{border:0;box-shadow:none;background-color:var(--gb-surface-1);text-shadow:1.5px 1.5px rgba(0,0,0,.4)}
+.footer__icon{color:var(--gb-accent-strong)}
+
+/* legacy chat widget (#frame) — kept in case it's still in use anywhere */
+#frame{background:var(--gb-mantle)}
+#frame .content .messages ul li{border-bottom:1px dashed var(--gb-surface-1)}
+.chatbox .typing{color:var(--gb-text)}
+#frame .content .messages ul li.sent h4 .text-muted{color:var(--gb-subtext)}
+#frame .content .messages ul li>img{border:3px solid var(--gb-blue)}
+#frame .content .message-input .wrap input{color:var(--gb-mantle)}
+#frame .content .message-input .wrap input:focus{outline:none}
+#frame .content .message-input .wrap .attachment{color:var(--gb-overlay)}
+#frame .content .message-input .wrap button{background:var(--gb-accent);color:var(--gb-mantle)}
+#frame .content .message-input .wrap button:hover{background:var(--gb-accent-strong)}
+.sent>a{height:100%;position:absolute;bottom:0}
+.sent>a>img{display:block!important;height:100%;position:absolute;bottom:4px}
+#frame .content .messages ul li.sent img.chat-user-image{height:40px;width:40px}
+.sent>h4{display:block!important;border-top-left-radius:15px;border-top-right-radius:15px;background-color:var(--message-bubble-bg)!important;padding:4px 12px 0 8px;margin:4px 12px 0 48px}
+.sent>div{display:block!important;border-bottom-right-radius:15px;background-color:var(--message-bubble-bg)!important;padding:0 12px 4px 8px!important;margin:0 12px 4px 48px!important}
+.sent>.system{border-bottom-left-radius:15px}
+.sent>div:not(.system):before{content:"";position:absolute;bottom:4px;left:38px;width:0;border-right:10px solid var(--message-bubble-bg)!important;border-top:10px solid transparent}
+#frame .content .messages ul li.sent{border:0;display:table;max-width:85%;width:auto}
+#frame .content .messages ul li.sent h4 .text-muted{float:none}
+
+/*!
+ * Gruvbox Dark Soft — core rules
+ * Structural rules following the same pattern as Capyppuccin's _core.css,
+ * trimmed to what LAT (UNIT3D) actually renders and extended with the
+ * components Capyppuccin didn't cover (user sidebar, featured carousel,
+ * announcement banner, footer, breadcrumbs, torrent list view, etc.)
+ */
+:focus-visible{outline:0;transform:none!important;filter:none!important;box-shadow:none!important}
+a,a:link,a:visited{color:inherit}
+a:focus,a:hover{color:var(--gb-accent-light)}
+:where(.top-nav) a:not([style]){color:var(--gb-text)}
+:where(.bbcode-rendered,.panel__body,.post,.comment__content,.notification,.article-card,.message) a:not([style]){color:var(--gb-accent)}
+:where(.bbcode-rendered,.panel__body,.post,.comment__content,.notification,.article-card,.message) a:visited:not([style]){color:var(--gb-accent-soft)}
+:root{accent-color:var(--gb-accent)}
+
+a.form__button--filled.form__button--centered,a.form__button--filled.form__button--centered:link,a.form__button--filled.form__button--centered:visited{background:var(--gb-surface-1);color:var(--gb-accent-soft);border:1px solid var(--gb-accent-soft)}
+a.form__button--filled.form__button--centered:focus,a.form__button--filled.form__button--centered:hover{background:var(--gb-accent-strong);color:var(--gb-mantle);border:1px solid var(--gb-accent-strong)}
+button.form__button--filled.form__button--centered{background:var(--gb-accent);color:var(--gb-mantle)}
+button.form__button--filled.form__button--centered:hover{background:var(--gb-accent-strong)}
+.form__button,.form__standard-icon-button{color:var(--gb-subtext);transition:color .12s ease,background-color .12s ease}
+.form__button:hover,.form__standard-icon-button:hover{color:var(--gb-accent)}
+.form__button--text{color:var(--gb-accent)}
+a.fc-banner__cta.form__button--filled,a.fc-banner__cta.form__button--filled:link,a.fc-banner__cta.form__button--filled:visited,a.fc__cta.form__button--filled,a.fc__cta.form__button--filled:link,a.fc__cta.form__button--filled:visited{color:var(--gb-mantle)}
+a.fc-banner__cta.form__button--filled:focus,a.fc-banner__cta.form__button--filled:hover,a.fc__cta.form__button--filled:focus,a.fc__cta.form__button--filled:hover{background:var(--gb-accent-strong);color:var(--gb-mantle)}
+.achievements__group-title{color:var(--gb-subtext);border-color:var(--gb-surface-1)}
+.text-success{color:var(--gb-green)}
+.form__fieldset-checkbox-container .text-success{color:var(--gb-accent)}
+.text-info{color:var(--gb-subtext)}
+.form__checkbox{appearance:none;-webkit-appearance:none;width:16px;height:16px;border:1.5px solid var(--gb-overlay);border-radius:var(--gb-radius-xs);background-color:transparent;cursor:pointer;vertical-align:middle;margin-right:6px;transition:border-color .12s ease,background-color .12s ease;flex-shrink:0}
+.form__checkbox:hover{border-color:var(--gb-accent-strong)}
+.form__checkbox:checked{background-color:var(--gb-accent);border-color:var(--gb-accent);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231d2021'><path d='M6.173 11.591l-3.18-3.181 1.176-1.177 2.004 2.005 5.83-5.831 1.177 1.176z'/></svg>");background-repeat:no-repeat;background-position:center}
+.text-warning{color:var(--gb-accent-strong)}
+
+.compact-search,.quick-search{overflow:visible}
+.quick-search__results{z-index:1000}
+.quick-search:focus-within .quick-search__input,.quick-search:focus-within .quick-search__results{border-color:var(--gb-accent)}
+.quick-search__input{font-size:1.5rem;border:1px solid var(--gb-overlay-soft);color:var(--gb-text);transition:border-color .12s ease,box-shadow .12s ease}
+.quick-search:not(:focus-within) .quick-search__input{max-width:6.5rem}
+.quick-search__input:hover{border-color:var(--gb-accent-strong)}
+.quick-search__input:focus{border-color:var(--gb-accent);outline:0}
+.quick-search__result-name{color:var(--gb-text)}
+.quick-search__result-year,.quick-search__result-type{color:var(--gb-subtext)}
+.quick-search__result:hover .quick-search__result-name{color:var(--gb-accent)}
+
+.top-nav__icon-bar>li>a>svg,.top-nav__icon-bar>li>a>svg *{color:var(--gb-accent-strong);fill:var(--gb-accent-strong)}
+.top-nav__dropdown>a{border-radius:var(--gb-radius-md);transition:color .2s ease,background-color .2s ease}
+.top-nav__dropdown>a:hover{color:var(--gb-accent);background-color:var(--gb-surface-1)}
+body:has(main[class*=page__article]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__category-topic]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__forum]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__internal]) .top-nav__dropdown:has(a[href*="/subtitles"])>a:not([href]),body:has(main[class*=page__mediahub]) .top-nav__dropdown>a[href$="/torrents"],body:has(main[class*=page__missing]) .top-nav__dropdown:has(a[href*="/subtitles"])>a:not([href]),body:has(main[class*=page__page]) .top-nav__dropdown:has(a[href*="/tickets"])>a:not([href]),body:has(main[class*=page__playlist]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__poll]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__post]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__request]) .top-nav__dropdown>a[href$="/torrents"],body:has(main[class*=page__rss]) .top-nav__dropdown>a[href$="/torrents"],body:has(main[class*=page__staff]) .top-nav__dropdown:has(a[href*="/tickets"])>a:not([href]),body:has(main[class*=page__stats]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__subscription]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__subtitle]) .top-nav__dropdown:has(a[href*="/subtitles"])>a:not([href]),body:has(main[class*=page__ticket]) .top-nav__dropdown:has(a[href*="/tickets"])>a:not([href]),body:has(main[class*=page__topic]) .top-nav__dropdown>a[href$="/forums"],body:has(main[class*=page__torrent-reseed]) .top-nav__dropdown>a[href$="/torrents"],body:has(main[class*=page__torrent]) .top-nav__dropdown>a[href$="/torrents"],body:has(main[class*=page__trending]) .top-nav__dropdown:has(a[href*="/subtitles"])>a:not([href]),body:has(main[class*=page__user]) .top-nav__dropdown>a[href*="/users/"],body:has(main[class*=page__wiki]) .top-nav__dropdown:has(a[href*="/tickets"])>a:not([href]){color:var(--gb-accent);font-weight:700;box-shadow:inset 0 -2px 0 var(--gb-surface-0);background-color:var(--gb-surface-1)}
+body:has(main[class*=page__user-conversation]) .top-nav--right__icon-link[href*="/conversations"]>i,body:has(main[class*=page__user-notification]) .top-nav--right__icon-link[href*="/notifications"]>i{color:var(--top-nav-icon-bar-icon-hover-fg);background-color:var(--top-nav-icon-bar-icon-hover-bg)}
+
+.nav-tab--active__link,.nav-tab__link{border-radius:var(--gb-radius-md);transition:color .12s ease,background-color .12s ease}
+.nav-tab--active__link:hover,.nav-tab__link:hover{filter:none}
+.nav-tab--active>.nav-tab--active__link{color:var(--gb-accent);font-weight:600}
+
+.panel__tabs{background-color:var(--gb-surface-1);border-bottom:1px solid var(--gb-surface-1)}
+.panel__tab{background-color:transparent;border-bottom:2px solid transparent;color:var(--gb-subtext);border-radius:var(--gb-radius-md) var(--gb-radius-md) 0 0;transition:color .12s ease,border-color .12s ease,background-color .12s ease}
+.panel__tab--active,.panel__tab:hover{color:var(--gb-text);background-color:var(--gb-surface-0)}
+.panel__tab--active{color:var(--gb-accent);border-bottom:2px solid transparent;font-weight:600}
+.panel__heading{color:var(--gb-text)}
+[class*=page__] :is(.panel__heading,.panel__header-link){color:var(--gb-accent);text-transform:uppercase;letter-spacing:.8px;font-weight:700;font-size:14px}
+[class*=page__] :is(.panel,.panelV2){border-radius:var(--gb-radius-xl);overflow:hidden}
+[class*=page__] :is(.panel,.panelV2) :is(.panel__heading,.panel__header){border-radius:var(--gb-radius-xl) var(--gb-radius-xl) 0 0}
+
+.chatbox__tab .fa-comment.text-danger,.chatbox__tab-delete-button,.chatbox__tab-delete-icon{color:inherit}
+.chatbox__tab-delete-button:hover .chatbox__tab-delete-icon{color:var(--gb-red)}
+.bbcode-input__tab-label{color:var(--gb-subtext);cursor:pointer;transition:color .12s ease,background-color .12s ease}
+.bbcode-input__tab-label:hover{color:var(--gb-text);background-color:var(--gb-surface-1)}
+.bbcode-input__tab-input:checked+.bbcode-input__tab-label{color:var(--gb-accent);background-color:var(--gb-surface-1);border-bottom:2px solid transparent;font-weight:600}
+.bbcode-input__icon-separator{border:0;border-left:1px solid var(--gb-surface-1);width:0}
+
+.data-table{border-collapse:separate;border-spacing:0}
+.data-table thead tr th{font-weight:600;font-size:11px;letter-spacing:.6px;text-transform:uppercase;color:var(--gb-subtext)}
+.data-table thead tr th:first-of-type{border-top-left-radius:var(--gb-radius-md)}
+.data-table thead tr th:last-of-type{border-top-right-radius:var(--gb-radius-md)}
+.data-table tbody tr td{border-top:1px solid var(--gb-surface-1)}
+.data-table tbody tr:first-of-type td{border-top:none}
+.data-table tbody tr:last-of-type td:first-of-type{border-bottom-left-radius:var(--gb-radius-md)}
+.data-table tbody tr:last-of-type td:last-of-type{border-bottom-right-radius:var(--gb-radius-md)}
+.data-table tbody tr{transition:background-color .12s ease}
+:is(.panel,.panelV2) .data-table thead tr th:first-of-type,:is(.panel,.panelV2) .data-table thead tr th:last-of-type{border-top-left-radius:0;border-top-right-radius:0}
+.panel__tabs+.data-table thead tr th,.panel__tabs+.data-table-wrapper .data-table thead tr th{background-color:var(--gb-surface-0)}
+.key-value{border-collapse:separate;border-spacing:0;border-radius:var(--gb-radius-md);overflow:hidden}
+
+::selection{background:var(--gb-accent);color:var(--gb-mantle)}
+html{scrollbar-color:var(--gb-surface-1) var(--gb-base)}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:var(--gb-base)}
+::-webkit-scrollbar-thumb{background:var(--gb-surface-1);border-radius:var(--gb-radius-sm)}
+::-webkit-scrollbar-thumb:hover{background:var(--gb-accent)}
+.scroll-to-top-btn{background-color:var(--gb-surface-1);color:var(--gb-text);border:0;border-radius:var(--gb-radius-xl);transition:color .12s ease,background-color .12s ease}
+.scroll-to-top-btn:hover{background-color:var(--gb-accent-light);color:var(--gb-mantle)}
+.scroll-to-top-btn:focus{background-color:var(--gb-accent-strong);color:var(--gb-mantle);outline:2px solid var(--gb-accent-strong);outline-offset:2px}
+
+/* posts / comments (forum & torrent comments) */
+.post{border-radius:var(--gb-radius-lg);overflow:hidden;box-shadow:var(--gb-shadow-md);background-color:var(--gb-surface-0);margin-bottom:12px}
+.post__header{background-color:var(--gb-surface-1);color:var(--gb-text);border-bottom:1px solid var(--gb-surface-1)}
+.post__datetime,.post__topic{color:var(--gb-subtext);font-size:12px}
+.post__topic a{color:var(--gb-accent)}
+.post__topic a:hover{color:var(--gb-accent-light)}
+.post__tip-stats{color:var(--gb-subtext)}
+.post__toolbar{background-color:var(--gb-surface-1);border-bottom-left-radius:var(--gb-radius-md)}
+.post__tip-button,.post__toolbar{color:var(--gb-subtext)}
+.post__aside,.post__tip-button:hover{background-color:var(--gb-surface-0);color:var(--gb-accent)}
+.post__aside{color:var(--gb-subtext);border-right:1px solid var(--gb-surface-1);border-top-left-radius:var(--gb-radius-lg);border-bottom-left-radius:var(--gb-radius-lg)}
+.post__avatar{border-radius:var(--gb-radius-md)}
+.post__body,.post__content{background-color:var(--gb-surface-0);color:var(--gb-text);padding:14px 18px}
+.post__footer{background-color:var(--gb-surface-0);border-top:1px solid var(--gb-surface-1);padding:8px 14px}
+.page__forum--index .key-value dd,.post__author{color:var(--gb-accent);font-weight:600}
+.post__author:hover{color:var(--gb-accent-light)}
+.post__group-name,.post__group-title,.post__stats dd,.post__stats dt{color:var(--gb-subtext);font-size:11px}
+.post__like{color:var(--gb-green)}
+.post__dislike{color:var(--gb-red)}
+.page__forum--index .key-value dt,.post__dislike-count,.post__like-count{color:var(--gb-subtext)}
+
+.comment,body .swal2-popup{border-radius:var(--gb-radius-lg)}
+.comment{overflow:hidden;box-shadow:var(--gb-shadow-md);background-color:var(--gb-surface-0);margin-bottom:12px}
+.comment__header{background-color:var(--gb-surface-1);color:var(--gb-text)}
+.comment__datetime{color:var(--gb-subtext);font-size:12px}
+.comment__aside,.comment__toolbar{background-color:var(--gb-surface-1);color:var(--gb-subtext)}
+.comment__aside{background-color:var(--gb-surface-0);border-right:1px solid var(--gb-surface-1)}
+.comment__avatar{border-radius:var(--gb-radius-md)}
+.comment__content{background-color:var(--gb-surface-0);color:var(--gb-text)}
+.comment__author{color:var(--gb-accent);font-weight:600}
+.comment__author-title{color:var(--gb-subtext);font-size:11px}
+.comment__list-item+.comment__list-item>.comment{border-top:none;padding-top:0;border-radius:var(--gb-radius-lg)}
+
+/* subforum / topic listings (forum index) */
+.subforum-listings__item{transition:background-color .12s ease}
+.subforum-listings__item:hover{background-color:var(--gb-surface-1)}
+.subforum-listing__link{color:var(--gb-accent);font-size:15px}
+.subforum-listing__link:hover{color:var(--gb-accent-light)}
+.subforum-listing__description{color:var(--gb-subtext);font-size:12px}
+.subforum-listing__icon{color:var(--gb-accent-strong)}
+.subforum-listing__post-stats dd,.subforum-listing__topic-stats dd,.topic-listing__post-stats dd,.topic-listing__view-stats dd{font-size:16px;font-weight:600;color:var(--gb-accent)}
+.subforum-listing__post-stats dt,.subforum-listing__topic-stats dt{color:var(--gb-subtext);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.subforum-listing__latest-link{color:var(--gb-text);font-weight:500}
+.subforum-listing__latest-link:hover,.subforum-listing__latest-post-link:hover{color:var(--gb-accent)}
+.subforum-listing__latest-datetime,.subforum-listing__latest-post-link{color:var(--gb-subtext);font-size:12px}
+.subforum-listing__latest-author-link{color:var(--gb-accent-strong);font-size:12px}
+.subforum-listing__latest-author-link:hover{color:var(--gb-accent-light)}
+
+.topic-listings__item{transition:background-color .12s ease}
+.topic-listings__item:hover{background-color:var(--gb-surface-1)}
+.topic-listing--unread{border-left:3px solid var(--gb-accent)}
+.topic-listing--read{border-left:3px solid transparent}
+.topic-listing--read .topic-listing__link:hover,.topic-listing__link{color:var(--gb-accent)}
+.topic-listing__link:hover{color:var(--gb-accent-light)}
+.topic-listing--read .topic-listing__link,.topic-listing__created-author,.topic-listing__created-datetime,.topic-listing__created-link{color:var(--gb-subtext)}
+.topic-listing__created-link:hover{color:var(--gb-accent)}
+.topic-listing__icon{color:var(--gb-accent-strong)}
+.topic-listing__forum{color:var(--gb-subtext)}
+.topic-listing__post-stats dt,.topic-listing__view-stats dt{color:var(--gb-subtext);font-size:10px;font-weight:500}
+.topic-listing__latest-author-link{color:var(--gb-accent-strong);font-size:12px}
+.topic-listing__latest-author-link:hover,.torrent-search--grouped__name a:hover{color:var(--gb-accent-light)}
+.topic-listing__latest-datetime,.topic-listing__latest-post-link{color:var(--gb-subtext);font-size:12px}
+.topic-listing__latest-post-link:hover,.work__language-link:hover,.work__media-type-link:hover{color:var(--gb-accent)}
+.topic-tag{--forum-tag-implemented-bg:rgba(181,118,20,.18);--forum-tag-implemented-fg:var(--gb-accent-strong);--forum-tag-approved-bg:rgba(184,187,38,.18);--forum-tag-approved-fg:var(--gb-green);--forum-tag-suggestion-bg:rgba(229,159,161,.18);--forum-tag-suggestion-fg:var(--gb-pink);--forum-tag-bug-bg:rgba(251,73,52,.18);--forum-tag-bug-fg:var(--gb-red);--forum-tag-solved-bg:rgba(211,134,155,.18);--forum-tag-solved-fg:var(--gb-mauve);--forum-tag-invalid-bg:rgba(189,174,147,.18);--forum-tag-invalid-fg:var(--gb-subtext);--forum-tag-denied-bg:rgba(251,73,52,.12);--forum-tag-denied-fg:var(--gb-red)}
+
+/* meta / work (torrent + media detail pages) */
+.meta__heading,.meta__title{color:var(--gb-accent);font-weight:700}
+.meta__heading{text-transform:uppercase;letter-spacing:.6px;font-size:13px}
+.meta__description{color:var(--gb-text)}
+.meta__poster{border-radius:var(--gb-radius-lg)}
+.meta__title-link:hover .meta__title{color:var(--gb-accent-light)}
+.work__tags{color:var(--gb-subtext)}
+.work__language-link,.work__media-type-link{color:var(--gb-accent-strong)}
+.work__rating-text{color:var(--gb-accent);font-weight:600}
+
+.trailer-btn{background:linear-gradient(135deg,var(--gb-accent-strong),var(--gb-accent));color:var(--gb-mantle)}
+.trailer-btn:hover{box-shadow:var(--gb-glow-soft);color:var(--gb-mantle)}
+.trailer-modal{background:var(--gb-surface-0);border-color:var(--gb-accent);border-radius:var(--gb-radius-lg)}
+.trailer-modal__close{color:var(--gb-subtext)}
+.trailer-modal__title{color:var(--gb-text)}
+.trailer-modal__close:hover,.trailer-modal__yt-link{color:var(--gb-accent)}
+
+/* torrent search: poster/grouped view */
+.ratio-bar__tokens i,.top-nav__ratio-bar .ratio-bar__tokens i,.torrent-search--grouped__name a,.torrent-search--poster__poster:hover~.torrent-search--poster__caption .torrent-search--poster__title,.torrent-search--poster__result a:hover .torrent-search--poster__title{color:var(--gb-accent)}
+.trending-poster__download-count{background:var(--gb-surface-0);border-color:var(--gb-accent);color:var(--gb-text)}
+.torrent-search--poster__title{color:var(--gb-text)}
+.torrent-search--poster__release-date{color:var(--gb-subtext)}
+.similar-torrents__type{font-weight:600;color:var(--gb-accent-strong)}
+.ratio-bar__buffer i,.top-nav__ratio-bar .ratio-bar__buffer i{color:var(--gb-teal)}
+.ratio-bar__warnings i{color:var(--gb-red)}
+.top-nav__ratio-bar .ratio-bar__points i{color:var(--gb-accent-strong)}
+.top-nav__ratio-bar .ratio-bar__ratio i{color:var(--gb-accent)}
+.post__like,.ratio-bar__seeding i,.top-nav__ratio-bar .ratio-bar__seeding i,.top-nav__ratio-bar .ratio-bar__uploaded i{color:var(--gb-green)}
+.post__dislike,.ratio-bar__leeching i,.top-nav__ratio-bar .ratio-bar__downloaded i,.top-nav__ratio-bar .ratio-bar__leeching i{color:var(--gb-red)}
+
+/* torrent search: list view (used on the LAT homepage/search results table) */
+.torrent-search--list__row:hover{background-color:var(--gb-surface-1)}
+.torrent-search--list__name{color:var(--gb-accent);font-weight:500}
+.torrent-search--list__name:hover{color:var(--gb-accent-light)}
+.torrent-search--list__poster-img{border-radius:var(--gb-radius-sm)}
+.torrent-search--list__format,.torrent-search--list__resolution,.torrent-search--list__category,.torrent-search--list__type{color:var(--gb-subtext)}
+.torrent-search--list__seeders{color:var(--gb-green)}
+.torrent-search--list__leechers{color:var(--gb-red)}
+.torrent-search--list__completed{color:var(--gb-blue)}
+.torrent-search--list__buttons a{color:var(--gb-subtext)}
+.torrent-search--list__buttons a:hover{color:var(--gb-accent)}
+
+.torrent-icons__freeleech,.torrent-icons__freeleech+.fas{color:var(--gb-green)!important}
+.torrent-icons__internal,.torrent-icons__internal+.fas{color:var(--gb-accent-strong)!important}
+.torrent-icons__personal-release{color:var(--gb-mauve)}
+.torrent-icons__highspeed{color:var(--gb-red)}
+.torrent-icons__sticky{color:var(--gb-accent)}
+.torrent-icons__comments{color:var(--gb-blue)}
+.category__icon{color:var(--gb-accent-strong)}
+
+.top-nav__username .text-bold,.top-nav__username--highresolution .text-bold,.user-tag__link,td>span[style*="color: #"]{filter:saturate(.5) brightness(1.25)}
+.top-nav__username .text-bold[style*="#000"],.top-nav__username--highresolution .text-bold[style*="#000"],.user-tag__link[style*="#000"],.user-tag__link[style*="#000000"],td>span[style*="color: #000"],td>span[style*="color: #000000"]{color:var(--gb-text)!important;filter:none}
+[style*="rgb(0, 102, 0)"],[style*="rgb(0,102,0)"]{color:var(--gb-green)!important}
+[style*="rgb(204, 0, 0)"],[style*="rgb(204,0,0)"]{color:var(--gb-red)!important}
+
+/* chat */
+.chatbox-message:hover .chatbox-message__action-button:hover,.chatbox-message:hover .chatbox-message__delete-button:hover{color:var(--gb-peach)}
+.chatbox-message{box-shadow:var(--gb-shadow-sm)}
+.chatbox-message__address{color:var(--gb-text)}
+.chatbox-message__time{color:var(--gb-subtext)}
+.chatbox-message__content{color:var(--gb-text)}
+.bot-message,.chatbox-message__content.bot-message{color:var(--gb-subtext)}
+.chatbox-message__avatar[style*="#2ECC40"],.chatbox-message__avatar[style*="#2ecc40"]{border-color:var(--gb-green)!important}
+.chatbox-message__avatar[style*="#FFDC00"],.chatbox-message__avatar[style*="#ffdc00"]{border-color:var(--gb-accent-strong)!important}
+.chatbox-message__avatar[style*="#FF4136"],.chatbox-message__avatar[style*="#ff4136"]{border-color:var(--gb-red)!important}
+.chatbox-message__avatar[style*="#AAAAAA"],.chatbox-message__avatar[style*="#aaaaaa"],.chatbox-message__avatar[style*="#ccc"]{border-color:var(--gb-overlay)!important}
+.chatroom__whispers{color:var(--gb-overlay);font-style:italic}
+
+/* sweetalert2 confirm dialogs */
+body .swal2-popup{background:var(--gb-surface-0);border:1px solid var(--gb-surface-1);box-shadow:var(--gb-shadow-lg)}
+.swal2-title,body .swal2-popup,body .swal2-popup.swal2-toast .swal2-title{color:var(--gb-text)}
+.swal2-content,.swal2-html-container{color:var(--gb-subtext)}
+.swal2-backdrop-show{background:var(--swal-backdrop-bg)}
+.swal2-icon.swal2-warning{border-color:var(--gb-peach);color:var(--gb-peach)}
+.swal2-icon.swal2-success{border-color:var(--gb-green);color:var(--gb-green)}
+.swal2-icon.swal2-success .swal2-success-ring,.swal2-icon.swal2-success [class^=swal2-success-line]{background-color:var(--gb-green);border-color:var(--gb-green)}
+.swal2-icon.swal2-success .swal2-success-ring{background-color:transparent}
+.swal2-icon.swal2-success .swal2-success-fix,.swal2-icon.swal2-success [class^=swal2-success-circular-line]{background-color:var(--gb-surface-0)!important}
+.swal2-icon.swal2-error{border-color:var(--gb-red);color:var(--gb-red)}
+.swal2-icon.swal2-error [class^=swal2-x-mark-line]{background-color:var(--gb-red)}
+.swal2-icon.swal2-info{border-color:var(--gb-blue);color:var(--gb-blue)}
+.swal2-icon.swal2-question{border-color:var(--gb-accent);color:var(--gb-accent)}
+.swal2-styled.swal2-confirm{background:var(--gb-accent);color:var(--gb-mantle);border:0;border-radius:var(--gb-radius-md);box-shadow:none}
+.swal2-styled.swal2-confirm:focus,.swal2-styled.swal2-confirm:hover{background:var(--gb-accent-strong);color:var(--gb-mantle);box-shadow:none}
+.swal2-styled.swal2-cancel{background:var(--gb-surface-1);color:var(--gb-accent-soft);border:1px solid var(--gb-accent-soft);border-radius:var(--gb-radius-md);box-shadow:none}
+.swal2-styled.swal2-cancel:focus,.swal2-styled.swal2-cancel:hover{background:var(--gb-accent-strong);color:var(--gb-mantle);border:1px solid var(--gb-accent-strong)}
+.swal2-styled.swal2-deny{background:var(--gb-red);color:var(--gb-mantle);border:0;border-radius:var(--gb-radius-md);box-shadow:none}
+.swal2-styled.swal2-deny:focus,.swal2-styled.swal2-deny:hover{background:var(--gb-red);filter:brightness(.9);color:var(--gb-mantle)}
+.swal2-styled:focus{outline:0;box-shadow:var(--swal-focus-ring)}
+.swal2-close{color:var(--gb-subtext)}
+.swal2-close:hover{color:var(--gb-accent)}
+.swal2-file,.swal2-input,.swal2-select,.swal2-textarea{background:var(--gb-surface-1);color:var(--gb-text);border:1px solid var(--gb-overlay);border-radius:var(--gb-radius-md);box-shadow:none}
+.swal2-input:focus,.swal2-select:focus,.swal2-textarea:focus{border-color:var(--gb-accent);box-shadow:var(--swal-input-focus-ring)}
+.swal2-validation-message{background:var(--gb-surface-1);color:var(--gb-red);border-radius:var(--gb-radius-md)}
+body .swal2-popup.swal2-toast{background:var(--gb-surface-0);color:var(--gb-text);border:1px solid var(--gb-surface-1);box-shadow:var(--gb-shadow-md)}
+body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-accent)}
+
+/* ---- LAT-specific additions (not present in the Capyppuccin reference) ---- */
+
+/* user sidebar (right-hand slide-out user menu) */
+.user-sidebar{background-color:var(--gb-surface-0);box-shadow:var(--gb-shadow-lg)}
+.user-sidebar__header{background-color:var(--gb-surface-1)}
+.user-sidebar__username{color:var(--gb-text)}
+.user-sidebar__close{color:var(--gb-subtext)}
+.user-sidebar__close:hover{color:var(--gb-accent)}
+.user-sidebar__menu-link{color:var(--gb-text);transition:color .12s ease,background-color .12s ease}
+.user-sidebar__menu-link:hover{color:var(--gb-accent);background-color:var(--gb-surface-1)}
+.user-sidebar__menu-link--logout{color:var(--gb-red)}
+.user-sidebar__badge{background-color:var(--gb-accent);color:var(--gb-mantle);border-radius:var(--gb-radius-xl)}
+.user-sidebar__footer{background-color:var(--gb-surface-1)}
+.user-sidebar__stat-label{color:var(--gb-subtext);font-size:11px;text-transform:uppercase;letter-spacing:.4px}
+.user-sidebar__stat-value{color:var(--gb-text);font-weight:600}
+.user-sidebar__toggle-label{color:var(--gb-text)}
+.user-sidebar__overlay{background:rgba(0,0,0,.55)}
+
+/* featured carousel (homepage) */
+.blocks__featured .panel__heading,.blocks__latest-topics .panel__heading,.blocks__online .panel__heading,.blocks__random-media .panel__heading,.blocks__top-torrents .panel__heading,.blocks__uploaders .panel__heading{color:var(--gb-accent)}
+.featured-carousel__feature-details{background-color:var(--gb-surface-1);color:var(--gb-subtext)}
+.featured-carousel__featured-by{color:var(--gb-accent-strong)}
+
+/* meta poster hover popup */
+.meta__poster-popup-backdrop-overlay{background:rgba(0,0,0,.6)}
+.meta__poster-popup-card{background-color:var(--gb-surface-0);border-radius:var(--gb-radius-lg);box-shadow:var(--gb-shadow-lg)}
+.meta__poster-popup-title{color:var(--gb-text);font-weight:700}
+.meta__poster-popup-year,.meta__poster-popup-detail{color:var(--gb-subtext)}
+.meta__poster-popup-overview{color:var(--gb-text)}
+
+/* announcement banner */
+.announcement-banner{background-color:var(--gb-surface-0);border-left:3px solid var(--gb-accent);color:var(--gb-text)}
+.announcement-banner--info{border-left-color:var(--gb-blue)}
+
+/* breadcrumbs */
+.breadcrumbsV2{color:var(--gb-subtext)}
+.breadcrumbsV2 a{color:var(--gb-subtext)}
+.breadcrumbsV2 a:hover{color:var(--gb-accent)}
+
+/* footer */
+.footer{background-color:var(--gb-mantle);color:var(--gb-subtext)}
+.footer__section-title{color:var(--gb-text);font-weight:600}
+.footer__section-list a{color:var(--gb-subtext)}
+.footer__section-list a:hover{color:var(--gb-accent)}
+.footer__stats{color:var(--gb-subtext)}
+.footer__sub-footer{border-top:1px solid var(--gb-surface-1)}
+.footer__copyright{color:var(--gb-muted)}
+
+/* misc homepage widgets */
+.top-users__place{color:var(--gb-accent);font-weight:700}
+.detail-label{color:var(--gb-subtext)}
+.detail-value{color:var(--gb-text);font-weight:600}
+.random__media img,[class^=media]{border-radius:var(--gb-radius-sm);transition:filter .12s ease}
+.random__media:hover img,[class^=media]:hover{filter:brightness(1.1)}
+.progress{background-color:var(--gb-surface-1);border-radius:var(--gb-radius-md)}
+.progress-bar{background-color:var(--gb-accent)}
+
+/* ============================================================
+   Overlay de acento (antes: capa amarilla) — recolor gruvbox
+   ============================================================ */
+:root{--color-light-blue: var(--gb-accent-light);--color-light-green: var(--gb-accent-light);--color-light-magenta: var(--gb-accent-light);--color-light-purple: var(--gb-accent-light);--color-400: var(--gb-accent);--color-blue: var(--gb-accent);--color-green: var(--gb-accent);--color-yellow: var(--gb-accent);--color-magenta: var(--gb-accent-strong);--color-red: var(--gb-accent-strong);--color-dark-green: var(--gb-accent-strong);--color-A200: var(--gb-accent-light);--color-A400: var(--gb-accent-light);--color-purple: var(--gb-accent-strong);--color-dark-blue: var(--gb-mantle);--color-dark-red: var(--gb-mantle);--movie-overlay: radial-gradient( circle at 20% 50%, rgba(0, 0, 0, 1) 5.46%, rgba(181, 118, 20, .46) );--background-pipe: url(/build/assets/yellow-h0GhnqYk.png);--gradient-background: radial-gradient(at 30% top, #32302f 0%, #1d2021 70%)}:root{--body-bg: var(--color-dark-blue);--torrent-row-fg: var(--gb-text);--torrent-row-format-fg: var(--gb-subtext);--torrent-row-format-bg: var(--gb-surface-1);--torrent-row-buttons-fg: currentColor;--torrent-row-seeders-fg: var(--gb-green);--torrent-row-leechers-fg: var(--color-light-red);--torrent-row-completed-fg: var(--color-400);--torrent-row-comments-fg: var(--gb-green);--torrent-row-internal-fg: var(--gb-rosewater);--torrent-row-personal-fg: var(--gb-mauve);--torrent-row-featured-fg: var(--color-400);--torrent-row-freeleech-fg: var(--gb-accent-light);--torrent-row-double-upload-fg: var(--gb-teal);--torrent-row-sticky-fg: var(--text-color);--torrent-row-highspeed-fg: var(--color-light-red);--torrent-row-bumped-fg: var(--gb-accent-strong)}.text-green{color:var(--gb-green)}.text-muted{color:var(--gb-subtext)}i.torrent-icon{color:var(--color-blue)}.panel-chat>.panel-body>#frame>.content{background-color:var(--color-dark-blue)}.text-info,.footer__icon{color:var(--color-400)}.badge-extra{border:1px solid rgba(124,111,100,.5);border-radius:0}.text-bright{color:#fbf1c7}a.text-bright:focus,a.text-bright:hover{color:var(--gb-accent-light)}.text-purple,.text-orange,.text-success,.text-pink{color:var(--color-400)}.text-danger{color:var(--gb-red)}.badge-user{border-radius:0}
+
+/* ============================================================
+   Livewire loading states — sin colores propios
+   ============================================================ */
+[wire\:loading][wire\:loading],
+[wire\:loading\.delay][wire\:loading\.delay],
+[wire\:loading\.inline-block][wire\:loading\.inline-block],
+[wire\:loading\.inline][wire\:loading\.inline],
+[wire\:loading\.block][wire\:loading\.block],
+[wire\:loading\.flex][wire\:loading\.flex],
+[wire\:loading\.table][wire\:loading\.table],
+[wire\:loading\.grid][wire\:loading\.grid],
+[wire\:loading\.inline-flex][wire\:loading\.inline-flex] {
+    display: none;
+}
+
+[wire\:loading\.delay\.none][wire\:loading\.delay\.none],
+[wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest],
+[wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter],
+[wire\:loading\.delay\.short][wire\:loading\.delay\.short],
+[wire\:loading\.delay\.default][wire\:loading\.delay\.default],
+[wire\:loading\.delay\.long][wire\:loading\.delay\.long],
+[wire\:loading\.delay\.longer][wire\:loading\.delay\.longer],
+[wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {
+    display: none;
+}
+
+[wire\:offline][wire\:offline] {
+    display: none;
+}
+
+[wire\:dirty]:not(textarea):not(input):not(select) {
+    display: none;
+}
+
+:root {
+    --livewire-progress-bar-color: var(--gb-accent-light, #fabd2f);
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+[wire\:cloak] {
+    display: none !important;
+}
+/* ============================================================
+   NProgress bar
+   ============================================================ */
+/* Make clicks pass-through */
+
+#nprogress {
+    pointer-events: none;
+}
+
+#nprogress .bar {
+    background: var(--livewire-progress-bar-color, #fabd2f);
+    position: fixed;
+    z-index: 1031;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+
+/* Fancy blur effect */
+
+#nprogress .peg {
+    display: block;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+    height: 100%;
+    box-shadow: 0 0 10px var(--livewire-progress-bar-color, #fabd2f), 0 0 5px var(--livewire-progress-bar-color, #fabd2f);
+    opacity: 1.0;
+    -webkit-transform: rotate(3deg) translate(0px, -4px);
+    -ms-transform: rotate(3deg) translate(0px, -4px);
+    transform: rotate(3deg) translate(0px, -4px);
+}
+
+
+/* Remove these to get rid of the spinner */
+
+#nprogress .spinner {
+    display: block;
+    position: fixed;
+    z-index: 1031;
+    top: 15px;
+    right: 15px;
+}
+
+#nprogress .spinner-icon {
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: solid 2px transparent;
+    border-top-color: var(--livewire-progress-bar-color, #fabd2f);
+    border-left-color: var(--livewire-progress-bar-color, #fabd2f);
+    border-radius: 50%;
+    -webkit-animation: nprogress-spinner 400ms linear infinite;
+    animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+    overflow: hidden;
+    position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+    position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes nprogress-spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
