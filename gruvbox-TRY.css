@@ -968,3 +968,6 @@ span[style*="display: inline-flex"] {
 .user-sidebar__toggle--top-nav .user-sidebar__toggle-avatar {
     border: 2px solid #fda600;
 }
+.user-sidebar__menu-link:hover {
+    border-left-color: #d79921;
+}
