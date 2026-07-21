@@ -319,23 +319,7 @@
   --post-aside-fg: var(--gb-subtext);
   --post-footer-fg: var(--gb-text);
 
-  --quick-search-bg: var(--gb-surface-0);
-  --quick-search-fg: var(--gb-text);
-  --quick-search-border: 1px solid var(--gb-overlay-soft);
-  --quick-search-border-radius: var(--gb-radius-md);
-  --quick-search-box-shadow: var(--gb-shadow-sm);
-  --quick-search-selector-fg: var(--gb-subtext);
-  --quick-search-selector-hover-bg: var(--gb-surface-1);
-  --quick-search-selector-hover-fg: var(--gb-accent);
-  --quick-search-selector-selected-bg: var(--gb-accent-strong);
-  --quick-search-selector-selected-fg: var(--gb-mantle);
-  --quick-search-result-bg: var(--gb-surface-0);
-  --quick-search-result-fg: var(--gb-text);
-  --quick-search-result-hover-bg: var(--gb-surface-1);
-  --quick-search-result-hover-fg: var(--gb-accent);
-  --quick-search-result-image-border-radius: var(--gb-radius-xl);
-  --quick-search-result-year-fg: var(--gb-subtext);
-  --quick-search-result-border: none;
+____________
 
   --scrollbar-color: var(--gb-surface-1);
 
