@@ -917,11 +917,14 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
 .user-sidebar__toggle--top-nav .user-sidebar__toggle-avatar {
     border: 2px solid #fda600;
 }
-/* Ocultar el bloque "Apoya A Lat-Team" del top-nav */
+
 .top-nav__dropdown:has(a[href*="/donations"]){
   display: none !important;
 }
-
+/* Ancho del INPUT — sin foco y con foco */
+.quick-search:not(:focus-within) .quick-search__input {
+    max-width: 10.5rem !important;
+}
 .user-sidebar__toggle--top-nav .user-sidebar__toggle-avatar {
     border: 2px solid #fda600;
 }
