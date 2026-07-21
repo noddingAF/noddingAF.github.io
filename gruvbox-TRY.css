@@ -984,8 +984,6 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     display: flex;
     align-items: center;
     align-self: center !important;
-}
-.quick-search__input:focus {
-    outline: none !important;
-    box-shadow: none !important;
+    position: relative;
+    z-index: 50;
 }
