@@ -929,14 +929,23 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     border: 2px solid #fda600;
 }
 
-
 .form__legend {
     background: none !important;
 }
 
-
-
 span[style*="display: inline-flex"] {
     background: transparent !important;
     border: none !important;
+}
+
+=====================
+.quick-search__inputs {
+    position: static !important;
+    display: block !important;
+    height: auto !important;
+    width: auto !important;
+    align-items: initial !important;
+    justify-content: initial !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
