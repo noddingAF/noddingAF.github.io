@@ -954,3 +954,22 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
         transform: rotate(360deg);
     }
 }
+/* Announcement banner (tipo "info") — pisa los estilos inline con !important */
+.announcement-banner--info{
+  background-color: var(--gb-surface-1) !important;
+  border-color: var(--gb-blue) !important;
+  color: var(--gb-text) !important;
+  box-shadow: var(--gb-shadow-sm) !important;
+}
+.announcement-banner--info i{
+  color: var(--gb-blue) !important;
+}
+.announcement-banner--info h3{
+  color: var(--gb-text) !important;
+}
+.announcement-banner--info a{
+  color: var(--gb-accent-light) !important;
+}
+.announcement-banner--info a:hover{
+  color: var(--gb-accent) !important;
+}
