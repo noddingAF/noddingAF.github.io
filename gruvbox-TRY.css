@@ -379,7 +379,6 @@
   --textarea-padding-hover: 11px;
 
   --top-nav-bg: var(--gb-mantle);
-  --top-nav-box-shadow: var(--gb-shadow-sm);
   --top-nav-dropdown-fg: var(--gb-text);
   --top-nav-dropdown-hover-fg: var(--gb-accent);
   --top-nav-dropdown-hover-bg: var(--gb-surface-1);
