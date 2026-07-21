@@ -319,7 +319,23 @@
   --post-aside-fg: var(--gb-subtext);
   --post-footer-fg: var(--gb-text);
 
-____________
+  --quick-search-bg: var(--gb-surface-0);
+  --quick-search-fg: var(--gb-text);
+  --quick-search-border: 1px solid var(--gb-overlay-soft);
+  --quick-search-border-radius: var(--gb-radius-md);
+  --quick-search-box-shadow: var(--gb-shadow-sm);
+  --quick-search-selector-fg: var(--gb-subtext);
+  --quick-search-selector-hover-bg: var(--gb-surface-1);
+  --quick-search-selector-hover-fg: var(--gb-accent);
+  --quick-search-selector-selected-bg: var(--gb-accent-strong);
+  --quick-search-selector-selected-fg: var(--gb-mantle);
+  --quick-search-result-bg: var(--gb-surface-0);
+  --quick-search-result-fg: var(--gb-text);
+  --quick-search-result-hover-bg: var(--gb-surface-1);
+  --quick-search-result-hover-fg: var(--gb-accent);
+  --quick-search-result-image-border-radius: var(--gb-radius-xl);
+  --quick-search-result-year-fg: var(--gb-subtext);
+  --quick-search-result-border: none;
 
   --scrollbar-color: var(--gb-surface-1);
 
@@ -774,54 +790,7 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
    ============================================================ */
 :root{--color-light-blue: var(--gb-accent-light);--color-light-green: var(--gb-accent-light);--color-light-magenta: var(--gb-accent-light);--color-light-purple: var(--gb-accent-light);--color-400: var(--gb-accent);--color-blue: var(--gb-accent);--color-green: var(--gb-accent);--color-yellow: var(--gb-accent);--color-magenta: var(--gb-accent-strong);--color-red: var(--gb-accent-strong);--color-dark-green: var(--gb-accent-strong);--color-A200: var(--gb-accent-light);--color-A400: var(--gb-accent-light);--color-purple: var(--gb-accent-strong);--color-dark-blue: var(--gb-mantle);--color-dark-red: var(--gb-mantle);--movie-overlay: radial-gradient( circle at 20% 50%, rgba(0, 0, 0, 1) 5.46%, rgba(181, 118, 20, .46) );--background-pipe: url(/build/assets/yellow-h0GhnqYk.png);--gradient-background: radial-gradient(at 30% top, #32302f 0%, #1d2021 70%)}:root{--body-bg: var(--color-dark-blue);--torrent-row-fg: var(--gb-text);--torrent-row-format-fg: var(--gb-subtext);--torrent-row-format-bg: var(--gb-surface-1);--torrent-row-buttons-fg: currentColor;--torrent-row-seeders-fg: var(--gb-green);--torrent-row-leechers-fg: var(--color-light-red);--torrent-row-completed-fg: var(--color-400);--torrent-row-comments-fg: var(--gb-green);--torrent-row-internal-fg: var(--gb-rosewater);--torrent-row-personal-fg: var(--gb-mauve);--torrent-row-featured-fg: var(--color-400);--torrent-row-freeleech-fg: var(--gb-accent-light);--torrent-row-double-upload-fg: var(--gb-teal);--torrent-row-sticky-fg: var(--text-color);--torrent-row-highspeed-fg: var(--color-light-red);--torrent-row-bumped-fg: var(--gb-accent-strong)}.text-green{color:var(--gb-green)}.text-muted{color:var(--gb-subtext)}i.torrent-icon{color:var(--color-blue)}.panel-chat>.panel-body>#frame>.content{background-color:var(--color-dark-blue)}.text-info,.footer__icon{color:var(--color-400)}.badge-extra{border:1px solid rgba(124,111,100,.5);border-radius:0}.text-bright{color:#fbf1c7}a.text-bright:focus,a.text-bright:hover{color:var(--gb-accent-light)}.text-purple,.text-orange,.text-success,.text-pink{color:var(--color-400)}.text-danger{color:var(--gb-red)}.badge-user{border-radius:0}
 
-/* ============================================================
-   Livewire loading states — sin colores propios
-   ============================================================ */
-[wire\:loading][wire\:loading],
-[wire\:loading\.delay][wire\:loading\.delay],
-[wire\:loading\.inline-block][wire\:loading\.inline-block],
-[wire\:loading\.inline][wire\:loading\.inline],
-[wire\:loading\.block][wire\:loading\.block],
-[wire\:loading\.flex][wire\:loading\.flex],
-[wire\:loading\.table][wire\:loading\.table],
-[wire\:loading\.grid][wire\:loading\.grid],
-[wire\:loading\.inline-flex][wire\:loading\.inline-flex] {
-    display: none;
-}
 
-[wire\:loading\.delay\.none][wire\:loading\.delay\.none],
-[wire\:loading\.delay\.shortest][wire\:loading\.delay\.shortest],
-[wire\:loading\.delay\.shorter][wire\:loading\.delay\.shorter],
-[wire\:loading\.delay\.short][wire\:loading\.delay\.short],
-[wire\:loading\.delay\.default][wire\:loading\.delay\.default],
-[wire\:loading\.delay\.long][wire\:loading\.delay\.long],
-[wire\:loading\.delay\.longer][wire\:loading\.delay\.longer],
-[wire\:loading\.delay\.longest][wire\:loading\.delay\.longest] {
-    display: none;
-}
-
-[wire\:offline][wire\:offline] {
-    display: none;
-}
-
-[wire\:dirty]:not(textarea):not(input):not(select) {
-    display: none;
-}
-
-:root {
-    --livewire-progress-bar-color: var(--gb-accent-light, #fabd2f);
-}
-
-[x-cloak] {
-    display: none !important;
-}
-
-[wire\:cloak] {
-    display: none !important;
-}
-/* ============================================================
-   NProgress bar
-   ============================================================ */
 /* Make clicks pass-through */
 
 #nprogress {
@@ -941,9 +910,7 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     max-width: 10.5rem !important;
 }
 
-.quick-search:focus-within .quick-search__input {
-    max-width: 12.6rem !important;
-}
+
 
 
 /* Alto más chico y centrado vertical */
