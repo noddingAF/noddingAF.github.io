@@ -575,15 +575,6 @@ body:has(main[class*=page__user-conversation]) .top-nav--right__icon-link[href*=
 .panel__tabs+.data-table thead tr th,.panel__tabs+.data-table-wrapper .data-table thead tr th{background-color:var(--gb-surface-0)}
 .key-value{border-collapse:separate;border-spacing:0;border-radius:var(--gb-radius-md);overflow:hidden}
 
-::selection{background:var(--gb-accent);color:var(--gb-mantle)}
-html{scrollbar-color:var(--gb-surface-1) var(--gb-base)}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:var(--gb-base)}
-::-webkit-scrollbar-thumb{background:var(--gb-surface-1);border-radius:var(--gb-radius-sm)}
-::-webkit-scrollbar-thumb:hover{background:var(--gb-accent)}
-.scroll-to-top-btn{background-color:var(--gb-surface-1);color:var(--gb-text);border:0;border-radius:var(--gb-radius-xl);transition:color .12s ease,background-color .12s ease}
-.scroll-to-top-btn:hover{background-color:var(--gb-accent-light);color:var(--gb-mantle)}
-.scroll-to-top-btn:focus{background-color:var(--gb-accent-strong);color:var(--gb-mantle);outline:2px solid var(--gb-accent-strong);outline-offset:2px}
 
 /* posts / comments (forum & torrent comments) */
 .post{border-radius:var(--gb-radius-lg);overflow:hidden;box-shadow:var(--gb-shadow-md);background-color:var(--gb-surface-0);margin-bottom:12px}
