@@ -977,6 +977,7 @@ body .swal2-popup.swal2-toast .swal2-timer-progress-bar{background:var(--gb-acce
     max-width: 10.5rem !important;
 }
 
-.quick-search:focus-within .quick-search__input {
-    max-width: 12.6rem !important;
+.quick-search__input {
+    padding-top: 4.8px !important;
+    padding-bottom: 4.8px !important;
 }
