@@ -961,3 +961,10 @@ span[style*="display: inline-flex"] {
     outline: 2px solid var(--focus-color, #d79921);
     outline-offset: 2px;
 }
+
+.top-nav {
+    background-color: #282828;
+}
+.secondary-nav {
+    background-color: #202020;
+}
