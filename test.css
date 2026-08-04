@@ -786,7 +786,12 @@ body>header {
 .chatbox-message__content {
   word-wrap: break-word;
 }
-span.fa-fade {
+
+.top-nav__dropdown .fa-fade[style*='sparkels.gif'] {
+    display: none !important;
+}
+
+.top-nav__dropdown:has(.fa-fade[style*='sparkels.gif']) {
     display: none !important;
 }
 .top-nav {
