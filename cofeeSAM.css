@@ -791,4 +791,7 @@ li.eventos-nav--running > a > .top-nav--left__container {
     border: none !important;
     box-shadow: none !important;
     animation: none !important;
+    font-weight: normal !important;
+    padding: 0 !important;
+
 }
