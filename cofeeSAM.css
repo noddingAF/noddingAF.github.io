@@ -750,11 +750,13 @@ body>header {
     padding: 20px max(10px, 5vw - 30px, 10vw - 100px)
 }
 
-.top-nav_icon-bar>li>a:hover>i {
-    color: #42352d(--top-nav-icon-bar-icon-hover-fg);
-    background-color: #42352d(--top-nav-icon-bar-icon-hover-bg);
+/* Deregue */
+.top-nav_icon-bar > li > a:hover > i {
+    color: #42352d !important;
+    background-color: #42352d !important;
 }
+
 .eventos-nav--running > a > .top-nav--left__container {
-    background: #ffffff00;
+    background-color: transparent !important;
     color: #d1bea9 !important;
 }
