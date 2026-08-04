@@ -354,6 +354,9 @@
     --user-stat-card-border: none;
     --user-stat-card-border-radius: 0;
     --user-stat-card-box-shadow: none
+    --top-nav-icon-bar-icon-hover-fg: #3e2723; /* Marrón muy oscuro para el icono */
+    --top-nav-icon-bar-icon-hover-bg: #5d4037; /* Marrón oscuro para el fondo */
+}
 }
 
 .text-bright {
