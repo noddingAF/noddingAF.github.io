@@ -786,10 +786,8 @@ body>header {
 .chatbox-message__content {
   word-wrap: break-word;
 }
-.fa-fade,
-.top-nav__dropdown:nth-of-type(5) > a:first-of-type,
-a[href*="https://darkpeers.org/donations"] {
-  display: none !important;
+span.fa-fade {
+    display: none !important;
 }
 .top-nav {
   background-color: #0b0b0b !important;
