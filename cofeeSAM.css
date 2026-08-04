@@ -750,13 +750,42 @@ body>header {
     padding: 20px max(10px, 5vw - 30px, 10vw - 100px)
 }
 
-/* Deregue */
-.top-nav_icon-bar > li > a:hover > i {
+/* =========================
+   NAV - Hover de íconos
+   ========================= */
+
+/* Enlace completo al pasar el mouse */
+.top-nav_icon-bar > li > a:hover {
     color: #42352d !important;
-    background-color: #42352d !important;
+    background: transparent !important;
 }
 
-.eventos-nav--running > a > .top-nav--left__container {
-    background-color: transparent !important;
+/* Ícono (i o svg) dentro del enlace */
+.top-nav_icon-bar > li > a:hover i,
+.top-nav_icon-bar > li > a:hover svg {
+    color: #42352d !important;
+    fill: #42352d !important;
+    background: transparent !important;
+}
+
+/* Mantener el color mientras el enlace está activo/focus */
+.top-nav_icon-bar > li > a:focus i,
+.top-nav_icon-bar > li > a:focus svg,
+.top-nav_icon-bar > li > a:active i,
+.top-nav_icon-bar > li > a:active svg {
+    color: #42352d !important;
+    fill: #42352d !important;
+}
+
+
+/* =========================
+   EVENTO EN EJECUCIÓN
+   ========================= */
+
+li.eventos-nav--running > a > .top-nav--left__container {
+    background: transparent !important;
     color: #d1bea9 !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
 }
