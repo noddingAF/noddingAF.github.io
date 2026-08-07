@@ -797,9 +797,6 @@ li.eventos-nav--running > a > .top-nav--left__container {
 }
 
 
-.featured-carousel__slide .torrent-card {
-    background: #e6d9cf !important;
-}
 
 .page__torrent--index .compact-search {
   background: #211a15 !important;
@@ -811,5 +808,5 @@ li.eventos-nav--running > a > .top-nav--left__container {
     display: none !important;
 }
 .featured-carousel__slide .torrent-card__body {
-    background-color: #e6d9cf !important;
+    background-color: #2a201a !important;
 }
