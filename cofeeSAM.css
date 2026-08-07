@@ -810,3 +810,7 @@ li.eventos-nav--running > a > .top-nav--left__container {
 .featured-carousel__slide .torrent-card__body {
     background-color: #2a201a !important;
 }
+body > header {
+    z-index: 1001 !important;
+    position: static !important;
+}
