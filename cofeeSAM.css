@@ -810,3 +810,6 @@ li.eventos-nav--running > a > .top-nav--left__container {
 .cat-advsearch {
     display: none !important;
 }
+.featured-carousel__slide .torrent-card__body {
+    background-color: #e6d9cf !important;
+}
