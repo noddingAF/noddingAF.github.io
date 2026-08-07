@@ -784,7 +784,6 @@ body>header {
 /* =========================
    EVENTO EN EJECUCIÓN
    ========================= */
-
 li.eventos-nav--running > a > .top-nav--left__container {
     background: transparent !important;
     color: #d1bea9 !important;
@@ -793,9 +792,15 @@ li.eventos-nav--running > a > .top-nav--left__container {
     animation: none !important;
     font-weight: normal !important;
     padding: 0 !important;
-
+    font-size: 0 !important; /* oculta el texto original (emoji + "Eventos") */
 }
 
+li.eventos-nav--running > a > .top-nav--left__container::before {
+    content: "Eventos";
+    font-size: 14px !important; /* ajustá al tamaño que tenía antes */
+    color: inherit; /* hereda el #d1bea9 que ya definiste arriba */
+    font-weight: inherit;
+}
 
 
 .page__torrent--index .compact-search {
