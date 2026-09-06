@@ -723,9 +723,18 @@ a.hover-green:hover {
     color: #07ff00;
 }
 
+/*
 body > header > nav.top-nav > div.top-nav__left > a.top-nav__dropdown--nontouch {
   display: block;
-  width: 200px; /* Ajusta según tus necesidades */
+  width: 200px;
   margin-left: auto;
   margin-right: auto;
+}
+*/
+
+li:has(a[href="/pages/5"]) {
+  display: none !important;
+}
+body > header > nav.top-nav > div.top-nav__left > a.top-nav__dropdown--nontouch {
+  display: none !important;
 }
