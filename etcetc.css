@@ -738,3 +738,7 @@ li:has(a[href="/pages/5"]) {
 body > header > nav.top-nav > div.top-nav__left > a.top-nav__dropdown--nontouch {
   display: none !important;
 }
+
+a.top-nav__dropdown--touch[href="https://theldu.to/hack"] {
+  display: none;
+}
