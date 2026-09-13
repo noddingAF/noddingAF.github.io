@@ -819,3 +819,23 @@ li.eventos-nav--running > a > .top-nav--left__container::before {
 html body > header {
     position: static !important;
 }
+
+/* chatbox no color text */
+.chatbox-message__content [style] {
+    color: inherit !important;
+    font: inherit !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    font-style: inherit !important;
+    letter-spacing: inherit !important;
+    text-decoration: inherit !important;
+    text-shadow: none !important;
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: initial !important;
+    filter: none !important;
+}
+ 
