@@ -821,21 +821,6 @@ html body > header {
 }
 
 /* chatbox no color text */
-
-.chatbox-message__content font,
-.chatbox-message__content [face] {
-    font-family: inherit !important;
-    font-size: inherit !important;
-    color: inherit !important;
-}
- 
-.chatbox-message__content pre,
-.chatbox-message__content code,
-.chatbox-message__content tt,
-.chatbox-message__content kbd {
-    font-family: inherit !important;
-    font-size: inherit !important;
-}
  
 .chatbox-message__content [style] {
     color: inherit !important;
@@ -855,26 +840,4 @@ html body > header {
     filter: none !important;
 }
 
-@font-face {
-    font-family: "ChatUnicodeFix";
-    src: url("./fonts/chat-unicode-fix.woff2") format("woff2");
-    font-display: swap;
-    unicode-range:
-        U+1D400-1D7FF,
-        /* Mathematical Alphanumeric Symbols: bold, italic, script,
-           fraktur, double-struck, sans-serif, monospace, dígitos... */
-        U+2102, U+210A-2113, U+2115, U+2119-211D, U+2124, U+2128, U+212C-212D,
-        U+212F-2131, U+2133-2134,
-        /* "holes" del bloque de arriba, letras que Unicode ya tenía
-           definidas en otro bloque (ej. italic h = Planck constant) */
-        U+2460-24FF,
-        /* Circled / Enclosed Alphanumerics (①②③.. Ⓐ Ⓑ..) */
-        U+FF00-FFEF;
-    /* Fullwidth Forms (ＡＢＣ..) */
-}
- 
-.chatbox-message__content,
-.chatbox-message__content * {
-    font-family: "ChatUnicodeFix", inherit !important;
-}
  
