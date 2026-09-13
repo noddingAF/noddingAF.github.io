@@ -821,6 +821,15 @@ html body > header {
 }
 
 /* chatbox no color text */
+
+.chatbox-message__content pre,
+.chatbox-message__content code,
+.chatbox-message__content tt,
+.chatbox-message__content kbd {
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+ 
 .chatbox-message__content [style] {
     color: inherit !important;
     font: inherit !important;
