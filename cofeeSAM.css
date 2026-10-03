@@ -840,7 +840,6 @@ html body > header {
     filter: none !important;
 }
 
-button[aria-label="Open Nipple Effect Radio"] {
+.launcher {
   display: none !important;
 }
- 
